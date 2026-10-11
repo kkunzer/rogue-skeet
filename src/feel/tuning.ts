@@ -1,6 +1,7 @@
 import { defaultInputConfig, type InputConfig } from '../input/scheme';
 import { defaultSimConfig, type SimConfig } from '../sim/config';
 import { TEST_LAUNCH } from '../sim/throws';
+import { defaultUpgradeTuning, type UpgradeTuning } from '../upgrades/params';
 
 /** Free-play (sandbox) throw tunables. The control test uses the fixed set in sim/throws.ts instead. */
 export interface SandboxConfig {
@@ -102,8 +103,17 @@ export const defaultJuiceTuning: Readonly<JuiceTuning> = {
   hapticPerfectTailMs: 14,
 };
 
+/** Run-mode knobs on top of the data in modes/run/stationData.ts. */
+export interface RunTuning {
+  /** Added to every round's starting shell pool (negative = harder). */
+  runShellBonus: number;
+  /** Multiplier on the pause after each throw. */
+  runGapMul: number;
+}
+
 /** Every tunable lives in this one typed object. Dev panel (?dev) edits it live. */
-export interface Tuning extends SimConfig, InputConfig, SandboxConfig, JuiceTuning {
+export interface Tuning
+  extends SimConfig, InputConfig, SandboxConfig, JuiceTuning, UpgradeTuning, RunTuning {
   /** Fixed sim rate in Hz. */
   simHz: number;
   /** Show the FPS / input latency overlay. */
@@ -114,6 +124,9 @@ export const defaultTuning: Readonly<Tuning> = {
   ...defaultSimConfig,
   ...defaultInputConfig,
   ...defaultJuiceTuning,
+  ...defaultUpgradeTuning,
+  runShellBonus: 0,
+  runGapMul: 1,
   doubleChance: 0.25,
   gapMin: 0.8,
   gapMax: 1.8,

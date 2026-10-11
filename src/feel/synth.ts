@@ -174,3 +174,111 @@ export function synthClick(sr = SYNTH_SR): Float32Array {
   }
   return normalize(out, 0.5);
 }
+
+/** Armored clay first hit: a metallic clang (inharmonic partials) over a short click. */
+export function synthArmor(sr = SYNTH_SR): Float32Array {
+  const rng = new Rng('armor');
+  const n = len(0.3, sr);
+  const click = highpass(noise(rng, n), 2500, sr);
+  const out = new Float32Array(n);
+  const partials: [number, number, number][] = [
+    [1180, 1, 0.07],
+    [1895, 0.7, 0.05],
+    [2740, 0.5, 0.04],
+    [3980, 0.3, 0.025],
+  ];
+  for (let i = 0; i < n; i++) {
+    const t = i / sr;
+    let v = (click[i] ?? 0) * 0.9 * Math.exp(-t / 0.003);
+    for (const [f, g, d] of partials) v += Math.sin(TAU * f * t) * g * Math.exp(-t / d);
+    out[i] = v;
+  }
+  return normalize(out, 0.8);
+}
+
+/** Chain shatter arc: a fast rising electric zap with crackle. */
+export function synthZap(sr = SYNTH_SR): Float32Array {
+  const rng = new Rng('zap');
+  const n = len(0.2, sr);
+  const out = new Float32Array(n);
+  const hp = highpass(noise(rng, n), 3000, sr);
+  let phase = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i / sr;
+    phase += (TAU * (500 + 3800 * (t / 0.2))) / sr;
+    const env = (1 - Math.exp(-t / 0.002)) * Math.exp(-t / 0.07);
+    out[i] = (Math.sin(phase) * 0.6 + (hp[i] ?? 0) * (0.5 + 0.5 * Math.sin(TAU * 70 * t))) * env;
+  }
+  return normalize(out, 0.7);
+}
+
+/** Out of shells: a hollow dry thud, lower and duller than the click. */
+export function synthShellEmpty(sr = SYNTH_SR): Float32Array {
+  const rng = new Rng('shell-empty');
+  const n = len(0.22, sr);
+  const low = lowpass(noise(rng, n), 900, sr);
+  const out = new Float32Array(n);
+  for (let i = 0; i < n; i++) {
+    const t = i / sr;
+    out[i] =
+      Math.sin(TAU * (210 - 90 * Math.min(1, t / 0.12)) * t) * 0.9 * Math.exp(-t / 0.05) +
+      (low[i] ?? 0) * 0.5 * Math.exp(-t / 0.02) +
+      Math.sin(TAU * 1800 * t) * 0.25 * Math.exp(-t / 0.004);
+  }
+  return normalize(out, 0.6);
+}
+
+function arpeggio(
+  sr: number,
+  notes: readonly number[],
+  step: number,
+  decay: number,
+  total: number,
+  shimmer = 0.25,
+): Float32Array {
+  const n = len(total, sr);
+  const out = new Float32Array(n);
+  notes.forEach((f, k) => {
+    const start = Math.floor(k * step * sr);
+    for (let i = start; i < n; i++) {
+      const t = (i - start) / sr;
+      const env = (1 - Math.exp(-t / 0.003)) * Math.exp(-t / decay);
+      out[i] =
+        (out[i] ?? 0) +
+        (Math.sin(TAU * f * t) + shimmer * Math.sin(TAU * f * 2.005 * t)) * env * 0.5;
+    }
+  });
+  return normalize(out, 0.7);
+}
+
+/** Upgrade picked: bright rising arpeggio. */
+export const synthUpgrade = (sr = SYNTH_SR): Float32Array =>
+  arpeggio(sr, [523.25, 659.25, 783.99, 1046.5], 0.07, 0.18, 0.7);
+
+/** Round cleared: a warm major arpeggio. */
+export const synthRoundClear = (sr = SYNTH_SR): Float32Array =>
+  arpeggio(sr, [392, 493.88, 587.33, 783.99], 0.11, 0.25, 1.0, 0.15);
+
+/** Run over: a slow falling minor figure. */
+export const synthRunOver = (sr = SYNTH_SR): Float32Array =>
+  arpeggio(sr, [392, 311.13, 261.63, 196], 0.18, 0.3, 1.3, 0.1);
+
+/** Synergy banner: a big stacked chord with a low boom underneath. */
+export function synthSynergy(sr = SYNTH_SR): Float32Array {
+  const n = len(1.1, sr);
+  const out = new Float32Array(n);
+  const chord = [261.63, 329.63, 392, 523.25, 659.25];
+  let phase = 0;
+  for (let i = 0; i < n; i++) {
+    const t = i / sr;
+    let v = 0;
+    chord.forEach((f, k) => {
+      const on = Math.max(0, t - k * 0.035);
+      v += Math.sin(TAU * f * on) * Math.exp(-on / 0.35) * (on > 0 ? 1 : 0);
+    });
+    phase += (TAU * (55 + 90 * Math.exp(-t / 0.08))) / sr;
+    v += Math.sin(phase) * 1.4 * Math.exp(-t / 0.14);
+    out[i] = Math.tanh(v * 0.55) * (1 - Math.exp(-t / 0.002));
+  }
+  return normalize(out, 0.85);
+}

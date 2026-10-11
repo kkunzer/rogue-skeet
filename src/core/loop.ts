@@ -1,3 +1,5 @@
+import { frameClock, timeScale } from './timescale';
+
 /**
  * Fixed-timestep simulation loop with an accumulator.
  *
@@ -61,7 +63,7 @@ export class GameLoop {
     this.accumulator += Math.max(0, seconds);
     let ran = 0;
     while (this.accumulator >= this.dt - EPS) {
-      if (ran >= this.maxCatchUpSteps) {
+      if (ran >= this.maxCatchUpSteps * (timeScale.value > 1 ? timeScale.value * 4 : 1)) {
         const dropped = Math.floor((this.accumulator + EPS) / this.dt);
         this.droppedSteps += dropped;
         this.accumulator = 0;
@@ -88,8 +90,9 @@ export class GameLoop {
     this.lastTime = performance.now();
     const frame = (now: number): void => {
       if (!this.running) return;
-      const elapsed = (now - this.lastTime) / 1000;
+      const elapsed = ((now - this.lastTime) / 1000) * timeScale.value;
       this.lastTime = now;
+      frameClock.ms = now;
       this.advance(elapsed);
       this.rafId = requestAnimationFrame(frame);
     };

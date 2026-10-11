@@ -59,6 +59,26 @@ export function createDevPanel(): Pane {
     'lowAngleMax',
   ] as const)
     sb.addBinding(tuning, k, { min: 10, max: 120, step: 0.5 });
+  const up = pane.addFolder({ title: 'Run and upgrades', expanded: false });
+  up.addBinding(tuning, 'runShellBonus', { min: -6, max: 12, step: 1, label: 'shell bonus' });
+  up.addBinding(tuning, 'runGapMul', { min: 0.4, max: 2, step: 0.05, label: 'throw gap x' });
+  up.addBinding(tuning, 'explosiveRadius', { min: 3, max: 30, step: 0.5 });
+  up.addBinding(tuning, 'chainRadius', { min: 3, max: 40, step: 0.5 });
+  up.addBinding(tuning, 'chainLinks', { min: 1, max: 6, step: 1 });
+  up.addBinding(tuning, 'synergyChainBonus', { min: 0, max: 1, step: 0.05 });
+  up.addBinding(tuning, 'slugRadiusMul', { min: 0.1, max: 1, step: 0.05 });
+  up.addBinding(tuning, 'slugTimeMul', { min: 0.2, max: 1, step: 0.05 });
+  up.addBinding(tuning, 'slugScoreMul', { min: 1, max: 4, step: 0.1 });
+  up.addBinding(tuning, 'curseRadiusMul', { min: 0.2, max: 1, step: 0.05 });
+  up.addBinding(tuning, 'curseScoreMul', { min: 1, max: 5, step: 0.1 });
+  up.addBinding(tuning, 'windAccelMin', { min: 1, max: 40, step: 0.5 });
+  up.addBinding(tuning, 'windAccelMax', { min: 1, max: 40, step: 0.5 });
+  up.addBinding(tuning, 'windGustMin', { min: 0.3, max: 4, step: 0.1 });
+  up.addBinding(tuning, 'windGustMax', { min: 0.3, max: 5, step: 0.1 });
+  up.addBinding(tuning, 'windGapMin', { min: 0.2, max: 5, step: 0.1 });
+  up.addBinding(tuning, 'windGapMax', { min: 0.2, max: 8, step: 0.1 });
+  up.addBinding(tuning, 'windTelegraph', { min: 0.2, max: 1.5, step: 0.05 });
+  up.addBinding(tuning, 'gravityMul', { min: 1, max: 2.5, step: 0.05 });
   const jf = pane.addFolder({ title: 'Juice: shatter', expanded: false });
   jf.addBinding(feel, 'juice', { label: 'juice on' });
   jf.addBinding(tuning, 'shardCountMin', { min: 3, max: 16, step: 1 });

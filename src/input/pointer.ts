@@ -1,4 +1,5 @@
 import type { Vec2 } from '../core/vec2';
+import { timeScale } from '../core/timescale';
 import type { PointerEvt } from './scheme';
 
 /**
@@ -23,7 +24,7 @@ export class SimClock {
    */
   toSim(timeStampMs: number, nowMs: number = performance.now()): number {
     const ts = Math.abs(timeStampMs - nowMs) > 1000 || timeStampMs > nowMs ? nowMs : timeStampMs;
-    return this.simSec + (ts - this.perfMs) / 1000;
+    return this.simSec + ((ts - this.perfMs) / 1000) * timeScale.value;
   }
 
   /** Sim time "now" (extrapolated from the last frame). */

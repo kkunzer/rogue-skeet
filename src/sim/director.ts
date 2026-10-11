@@ -37,6 +37,11 @@ export class ThrowDirector {
     return this.flying;
   }
 
+  /** Clays of the current throw still waiting for their launch delay. */
+  get pendingCount(): number {
+    return this.pending.length;
+  }
+
   hold(): void {
     this.holding = true;
   }

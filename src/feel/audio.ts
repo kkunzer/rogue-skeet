@@ -1,6 +1,13 @@
 import type { HouseId } from '../sim/houses';
 import {
   SYNTH_SR,
+  synthArmor,
+  synthRoundClear,
+  synthRunOver,
+  synthShellEmpty,
+  synthSynergy,
+  synthUpgrade,
+  synthZap,
   synthChime,
   synthClick,
   synthCrack,
@@ -20,6 +27,13 @@ export const CUE_IDS = [
   'thunk',
   'chime',
   'click',
+  'armor',
+  'zap',
+  'shellEmpty',
+  'upgrade',
+  'synergy',
+  'roundClear',
+  'runOver',
 ] as const;
 export type CueId = (typeof CUE_IDS)[number];
 
@@ -37,6 +51,13 @@ export const AUDIO_MANIFEST: Record<CueId, string | null> = {
   thunk: null,
   chime: null,
   click: null,
+  armor: null,
+  zap: null,
+  shellEmpty: null,
+  upgrade: null,
+  synergy: null,
+  roundClear: null,
+  runOver: null,
 };
 
 /** Procedural fallback for every cue. */
@@ -50,6 +71,13 @@ export const SYNTH_CUES: Record<CueId, (sr: number) => Float32Array> = {
   thunk: synthThunk,
   chime: synthChime,
   click: synthClick,
+  armor: synthArmor,
+  zap: synthZap,
+  shellEmpty: synthShellEmpty,
+  upgrade: synthUpgrade,
+  synergy: synthSynergy,
+  roundClear: synthRoundClear,
+  runOver: synthRunOver,
 };
 
 export const CRACK_CUES: readonly CueId[] = ['crack1', 'crack2', 'crack3'];
@@ -58,6 +86,7 @@ export const CRACK_CUES: readonly CueId[] = ['crack1', 'crack2', 'crack3'];
 export const HOUSE_AUDIO: Record<HouseId, { pan: number; rate: number }> = {
   high: { pan: -0.7, rate: 1.12 },
   low: { pan: 0.7, rate: 0.86 },
+  center: { pan: 0, rate: 1 },
 };
 
 /** Random pitch (playback rate) and gain for one play: `1 +/- pitchVar`, `base * (1 +/- gainVar)`. */

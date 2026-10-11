@@ -24,7 +24,11 @@ function build(plan: Plan): void {
     testerId: plan.id,
     handedness: plan.handed,
     attemptsPerScheme: plan.attempts.length,
-    settings: { ...defaultTuning },
+    settings: Object.fromEntries(
+      Object.entries(defaultTuning).filter(([, v]) =>
+        ['number', 'string', 'boolean'].includes(typeof v),
+      ),
+    ) as Record<string, number | string | boolean>,
     store: null,
     now: () => new Date(Date.UTC(2026, 9, 12, 12, 0, n++)),
   });

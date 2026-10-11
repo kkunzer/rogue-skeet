@@ -1,3 +1,4 @@
+import { frameClock } from '../../core/timescale';
 import { PointerInput, SimClock } from '../../input/pointer';
 import { createScheme } from '../../input';
 import type { ControlScheme, SchemeId } from '../../input/scheme';
@@ -21,7 +22,8 @@ export interface PlaySessionOptions {
   scheme: SchemeId;
   /** Receives every FireIntent the scheme emits. */
   onIntent: (intent: FireIntent) => void;
-  debug?: Pick<DebugProvider, 'mode' | 'result' | 'phase'>;
+  debug?: Pick<DebugProvider, 'mode'> &
+    Partial<Pick<DebugProvider, 'result' | 'phase' | 'run' | 'cfg'>>;
 }
 
 /**
@@ -70,6 +72,7 @@ export class PlaySession {
       mode: opts.debug?.mode ?? 'play',
       result: opts.debug?.result,
       phase: opts.debug?.phase,
+      run: opts.debug?.run,
       world: () => this.world,
       scheme: () => this.scheme,
       cfg: () => tuning,
@@ -131,7 +134,7 @@ export class PlaySession {
    */
   render(alpha: number, dt: number): void {
     const w = this.world;
-    this.clock.mark(w ? w.time + alpha * dt : 0);
+    this.clock.mark(w ? w.time + alpha * dt : 0, frameClock.ms > 0 ? frameClock.ms : undefined);
     const nowMs = performance.now();
     const realMs = this.lastRenderMs ? Math.min(100, Math.max(0, nowMs - this.lastRenderMs)) : 0;
     this.lastRenderMs = nowMs;

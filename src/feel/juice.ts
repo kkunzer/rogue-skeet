@@ -103,9 +103,12 @@ export class Juice {
         if (!this.on()) return;
         const cfg = this.d.cfg();
         const def = CLAY_TYPES[e.clay.type];
-        const o = e.shot.origin;
-        const dx = e.shot.aim.x - o.x;
-        const dy = e.shot.aim.y - o.y;
+        // cascade breaks (explosion, chain) push away from where they spread from
+        const o = e.cause.from && e.cause.kind !== 'shot' ? e.cause.from : e.shot.origin;
+        const tx = e.cause.from && e.cause.kind !== 'shot' ? e.clay.x : e.shot.aim.x;
+        const ty = e.cause.from && e.cause.kind !== 'shot' ? e.clay.y : e.shot.aim.y;
+        const dx = tx - o.x;
+        const dy = ty - o.y;
         const len = Math.hypot(dx, dy) || 1;
         const radius = cfg.clayRadius * def.radiusScale;
         this.shatterAt(
@@ -117,11 +120,41 @@ export class Juice {
             radius,
             color: def.fill,
             shotDir: { x: dx / len, y: dy / len },
-            quality: hitQuality(e.dist, hitRadius(cfg, e.clay.type), e.perfect),
+            quality: hitQuality(e.dist, hitRadius(cfg, e.clay.type, e.shot.radius), e.perfect),
             perfect: e.perfect,
           },
           true,
         );
+      }),
+      ev.on('crack', ({ clay, shot }) => {
+        if (!this.on()) return;
+        const cfg = this.d.cfg();
+        const def = CLAY_TYPES[clay.type];
+        const dx = clay.x - shot.aim.x;
+        const dy = clay.y - shot.aim.y;
+        const len = Math.hypot(dx, dy) || 1;
+        // a small chip of debris, a metallic clang, a short buzz: the clay itself keeps flying
+        this.shatterAt(
+          {
+            x: clay.x,
+            y: clay.y,
+            vx: clay.vx,
+            vy: clay.vy,
+            radius: cfg.clayRadius * def.radiusScale * 0.45,
+            color: def.rim,
+            shotDir: { x: dx / len, y: dy / len },
+            quality: 0.15,
+            perfect: false,
+          },
+          false,
+        );
+        this.d.audio.cue('armor', { gain: 0.9 });
+        this.d.haptics.play('hit');
+      }),
+      ev.on('explosion', ({ x, y, radius }) => this.explosion(x, y, radius)),
+      ev.on('chain', ({ link }) => {
+        if (!this.on()) return;
+        this.d.audio.cue('zap', { rate: 1 + 0.12 * (link - 1), delay: 0.02 });
       }),
       ev.on('escape', () => {
         this.stats.streak = 0;

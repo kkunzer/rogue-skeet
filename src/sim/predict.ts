@@ -1,12 +1,15 @@
 import { dist, type Vec2 } from '../core/vec2';
-import { advanceClay, type Clay } from './clay';
+import { advanceClay, type ClayState } from './clay';
 import type { SimConfig } from './config';
 import { GUN_ORIGIN } from './field';
 import { flightTime } from './shot';
 
-type ClayLike = Pick<Clay, 'type' | 'x' | 'y' | 'vx' | 'vy'>;
+type ClayLike = ClayState;
 
-/** Clay centre `dt` seconds from its current state. Exact: uses the same integrator as the sim. */
+/**
+ * Clay centre `dt` seconds from its current state. Exact: uses the same integrator as the sim,
+ * including rabbits' bounces and wind gusts (read from `cfg.gusts` at the clay's clock).
+ */
 export function clayPositionAt(cfg: SimConfig, clay: ClayLike, dt: number): Vec2 {
   const s = advanceClay(clay, dt, cfg);
   return { x: s.x, y: s.y };

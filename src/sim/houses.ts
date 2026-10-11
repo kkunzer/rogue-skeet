@@ -2,7 +2,10 @@ import { GROUND_H, WORLD_W } from './field';
 import type { Kin } from './ballistics';
 import type { Vec2 } from '../core/vec2';
 
-export type HouseId = 'high' | 'low';
+/** The two houses of the control test and sandbox. */
+export type BaseHouseId = 'high' | 'low';
+/** `center` is the trench house in the middle of the field (run mode boss flurry). */
+export type HouseId = BaseHouseId | 'center';
 
 export interface House {
   id: HouseId;
@@ -40,6 +43,17 @@ export const HOUSES: Record<HouseId, House> = {
     h: LOW_H,
     port: { x: WORLD_W - HOUSE_W, y: GROUND_H + LOW_H - 4 },
     dir: -1,
+  },
+  // Trench set into the ground left of the gun: throws clays almost straight up (angles past 90
+  // degrees lean back toward the high house).
+  center: {
+    id: 'center',
+    x: 28,
+    y: GROUND_H,
+    w: 10,
+    h: 0,
+    port: { x: 33, y: GROUND_H + 0.5 },
+    dir: 1,
   },
 };
 

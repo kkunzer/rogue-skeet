@@ -29,6 +29,12 @@ export function buildGreybox(): Container {
     const px = h.dir === 1 ? h.x + h.w - 2 : h.x;
     g.rect(px, h.port.y - 1.5, 2, 3).fill(0x111827);
   }
+  // trench house: a dark slot sunk into the ground strip with a lip, launches clays upward
+  const t = HOUSES.center;
+  g.rect(t.x, 0.5, t.w, GROUND_H - 0.5).fill(0x1b2118);
+  g.rect(t.x - 1, GROUND_H - 0.6, 1, 1.2).fill(0x7c9473);
+  g.rect(t.x + t.w, GROUND_H - 0.6, 1, 1.2).fill(0x7c9473);
+  g.rect(t.port.x - 2, GROUND_H - 0.8, 4, 1.2).fill(0x0a0d09);
   // gun: base + two barrels pointing up
   const { x, y } = GREYBOX.gun;
   g.circle(x, y, 3.5).fill(GREYBOX.gunColor);

@@ -1,6 +1,6 @@
 import { Rng } from '../core/rng';
 import type { ClayTypeId } from './clay';
-import type { HouseId } from './houses';
+import type { BaseHouseId, HouseId } from './houses';
 
 export interface ClaySpec {
   type: ClayTypeId;
@@ -24,7 +24,7 @@ export interface LaunchRange {
   angle: [number, number];
 }
 
-export const TEST_LAUNCH: Record<HouseId, LaunchRange> = {
+export const TEST_LAUNCH: Record<BaseHouseId, LaunchRange> = {
   high: { speed: [70, 86], angle: [44, 62] },
   low: { speed: [62, 80], angle: [48, 66] },
 };
@@ -34,7 +34,7 @@ export const TEST_THROWS = 20;
 export const TEST_DOUBLES = 4;
 export const TEST_GAP = 1.0;
 
-function claySpec(rng: Rng, house: HouseId, delay: number, range: LaunchRange): ClaySpec {
+function claySpec(rng: Rng, house: BaseHouseId, delay: number, range: LaunchRange): ClaySpec {
   return {
     type: 'standard',
     house,
@@ -60,13 +60,16 @@ export function buildTestSet(seed: string = TEST_SEED, ranges = TEST_LAUNCH): Th
     [17, 18, 19],
   ];
   const doubleAt = new Set(bands.map((b) => rng.pick(b)));
-  const singleHouses: HouseId[] = [];
+  const singleHouses: BaseHouseId[] = [];
   for (let i = 0; i < TEST_THROWS - TEST_DOUBLES; i++)
     singleHouses.push(i % 2 === 0 ? 'high' : 'low');
   // Seeded Fisher-Yates shuffle of the single-house order.
   for (let i = singleHouses.length - 1; i > 0; i--) {
     const j = rng.int(0, i);
-    [singleHouses[i], singleHouses[j]] = [singleHouses[j] as HouseId, singleHouses[i] as HouseId];
+    [singleHouses[i], singleHouses[j]] = [
+      singleHouses[j] as BaseHouseId,
+      singleHouses[i] as BaseHouseId,
+    ];
   }
   const out: ThrowSpec[] = [];
   let s = 0;
@@ -81,7 +84,7 @@ export function buildTestSet(seed: string = TEST_SEED, ranges = TEST_LAUNCH): Th
         gapAfter: TEST_GAP,
       });
     } else {
-      const h = singleHouses[s++] as HouseId;
+      const h = singleHouses[s++] as BaseHouseId;
       out.push({ kind: 'single', clays: [claySpec(rng, h, 0, ranges[h])], gapAfter: TEST_GAP });
     }
   }
@@ -89,7 +92,7 @@ export function buildTestSet(seed: string = TEST_SEED, ranges = TEST_LAUNCH): Th
 }
 
 export interface SandboxThrowOptions {
-  ranges: Record<HouseId, LaunchRange>;
+  ranges: Record<BaseHouseId, LaunchRange>;
   doubleChance: number;
   gap: [number, number];
 }
@@ -112,7 +115,7 @@ export function* sandboxThrows(
         gapAfter,
       };
     } else {
-      const h: HouseId = rng.next() < 0.5 ? 'high' : 'low';
+      const h: BaseHouseId = rng.next() < 0.5 ? 'high' : 'low';
       yield { kind: 'single', clays: [claySpec(rng, h, 0, opts.ranges[h])], gapAfter };
     }
   }

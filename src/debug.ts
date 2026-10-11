@@ -37,6 +37,25 @@ export interface FxDebug {
   juiceOn: boolean;
 }
 
+/** Run-mode state exposed to bots (`window.__debug.run()`). */
+export interface RunDebug {
+  seed: string;
+  phase: string;
+  /** 0..3 are rounds 1-4, 4 is the boss. */
+  round: number;
+  shells: number;
+  score: number;
+  streak: number;
+  owned: string[];
+  /** Upgrade ids on offer while drafting. */
+  offers: string[];
+  previewLeft: number;
+  synergies: string[];
+  shellsLeft: number[];
+  /** Active gust acceleration right now (0 when calm) and the next gust start, sim seconds. */
+  wind: { now: number; nextStart: number | null };
+}
+
 /** What the active mode hands to the debug API. */
 export interface DebugProvider {
   mode: string;
@@ -50,6 +69,7 @@ export interface DebugProvider {
   toClient: (p: Vec2) => { x: number; y: number };
   result?: () => ControlTestResult | null;
   phase?: () => string;
+  run?: () => RunDebug | null;
 }
 
 /** Dev and test builds only: `?test` enables it in a production build. */
@@ -97,6 +117,9 @@ const api = {
         age: c.age,
         house: c.house,
         throwIndex: c.throwIndex,
+        type: c.type,
+        hitsLeft: c.hitsLeft,
+        cracked: c.cracked,
       })),
       shots: w.shots.map((s) => ({ id: s.id, aim: s.aim, arriveTime: s.arriveTime })),
     };
@@ -108,6 +131,22 @@ const api = {
     const c = w?.clays.find((x) => x.id === id && x.status === 'live');
     if (!w || !c) return null;
     return idealAim(p.cfg(), c, delay + sinceStep(p, w));
+  },
+  /** Run mode: phase, round, shells, score, owned upgrades and draft offers (null elsewhere). */
+  run: (): RunDebug | null => provider?.run?.() ?? null,
+  /**
+   * Lead predictions for every live clay (rabbits, wind and gravity included): the aim point that
+   * hits each one if the shot is fired now, and how many hits it still needs.
+   */
+  predictions(): { id: number; type: string; hitsLeft: number; aim: Vec2; flight: number }[] {
+    const p = need();
+    const w = p.world();
+    if (!w) return [];
+    const delay = sinceStep(p, w);
+    return w.liveClays().map((c) => {
+      const l = idealAim(w.cfg, c, delay);
+      return { id: c.id, type: c.type, hitsLeft: c.hitsLeft, aim: l.aim, flight: l.flight };
+    });
   },
   /**
    * Perform the active scheme's gesture so that it fires at the ideal lead point for clay `id`,
