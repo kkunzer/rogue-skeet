@@ -1,5 +1,6 @@
 import { Container, Graphics } from 'pixi.js';
-import { GROUND_H, WORLD_H, WORLD_W } from './layout';
+import { GROUND_H, GUN_BARREL, GUN_BASE, WORLD_H, WORLD_W } from '../sim/field';
+import { HOUSES } from '../sim/houses';
 
 /** Greybox playfield in world units (y up): ground strip, left high house, right low house, gun. */
 export const GREYBOX = {
@@ -7,12 +8,9 @@ export const GREYBOX = {
   houseColor: 0x6b7280,
   houseRoof: 0x9ca3af,
   gunColor: 0xe5e7eb,
-  /** High house on the left. */
-  highHouse: { x: 0, y: GROUND_H, w: 14, h: 62 },
-  /** Low house on the right. */
-  lowHouse: { x: WORLD_W - 14, y: GROUND_H, w: 14, h: 28 },
-  /** Gun at bottom center, sitting on the ground strip. */
-  gun: { x: WORLD_W / 2, y: GROUND_H },
+  highHouse: HOUSES.high,
+  lowHouse: HOUSES.low,
+  gun: GUN_BASE,
 } as const;
 
 export function buildGreybox(): Container {
@@ -26,18 +24,16 @@ export function buildGreybox(): Container {
   // houses
   for (const h of [GREYBOX.highHouse, GREYBOX.lowHouse]) {
     g.rect(h.x, h.y, h.w, h.h).fill(GREYBOX.houseColor);
-    g.rect(h.x, h.y + h.h - 3, h.w, 3).fill(GREYBOX.houseRoof);
+    g.rect(h.x, h.y + h.h - 2.5, h.w, 2.5).fill(GREYBOX.houseRoof);
+    // launch port (faces inward)
+    const px = h.dir === 1 ? h.x + h.w - 2 : h.x;
+    g.rect(px, h.port.y - 1.5, 2, 3).fill(0x111827);
   }
-  // house launch ports (facing inward)
-  const hp = GREYBOX.highHouse;
-  g.rect(hp.x + hp.w - 2, hp.y + hp.h - 12, 2, 5).fill(0x111827);
-  const lp = GREYBOX.lowHouse;
-  g.rect(lp.x, lp.y + lp.h - 12, 2, 5).fill(0x111827);
   // gun: base + two barrels pointing up
   const { x, y } = GREYBOX.gun;
   g.circle(x, y, 3.5).fill(GREYBOX.gunColor);
-  g.rect(x - 1.8, y, 1.4, 9).fill(GREYBOX.gunColor);
-  g.rect(x + 0.4, y, 1.4, 9).fill(GREYBOX.gunColor);
+  g.rect(x - 1.8, y, 1.4, GUN_BARREL).fill(GREYBOX.gunColor);
+  g.rect(x + 0.4, y, 1.4, GUN_BARREL).fill(GREYBOX.gunColor);
   c.addChild(g);
   return c;
 }

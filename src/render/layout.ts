@@ -1,10 +1,9 @@
 import type { Vec2 } from '../core/vec2';
 
-/** Fixed gameplay playfield in world units (y up, origin bottom-left). */
-export const WORLD_W = 90;
-export const WORLD_H = 160;
-/** Height of the ground strip at the bottom of the playfield, in world units. */
-export const GROUND_H = 12;
+import { GROUND_H, WORLD_H, WORLD_W } from '../sim/field';
+
+// The fixed playfield (90x160, y up) is defined renderer-free in sim/field.ts.
+export { GROUND_H, WORLD_H, WORLD_W };
 
 export interface Layout {
   /** Screen width/height in CSS pixels. */

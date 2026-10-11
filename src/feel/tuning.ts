@@ -1,20 +1,46 @@
+import { defaultInputConfig, type InputConfig } from '../input/scheme';
+import { defaultSimConfig, type SimConfig } from '../sim/config';
+import { TEST_LAUNCH } from '../sim/throws';
+
+/** Free-play (sandbox) throw tunables. The control test uses the fixed set in sim/throws.ts instead. */
+export interface SandboxConfig {
+  doubleChance: number;
+  gapMin: number;
+  gapMax: number;
+  highSpeedMin: number;
+  highSpeedMax: number;
+  highAngleMin: number;
+  highAngleMax: number;
+  lowSpeedMin: number;
+  lowSpeedMax: number;
+  lowAngleMin: number;
+  lowAngleMax: number;
+}
+
 /** Every tunable lives in this one typed object. Dev panel (?dev) edits it live. */
-export interface Tuning {
+export interface Tuning extends SimConfig, InputConfig, SandboxConfig {
   /** Fixed sim rate in Hz. */
   simHz: number;
   /** Show the FPS / input latency overlay. */
   debugOverlay: boolean;
-  /** Placeholder: pattern radius in world units (used from Phase 1). */
-  patternRadius: number;
-  /** Placeholder: aim assist, 0..0.5 scales pattern radius (used from Phase 1). */
-  aimAssist: number;
 }
 
 export const defaultTuning: Readonly<Tuning> = {
+  ...defaultSimConfig,
+  ...defaultInputConfig,
+  doubleChance: 0.25,
+  gapMin: 0.8,
+  gapMax: 1.8,
+  highSpeedMin: TEST_LAUNCH.high.speed[0],
+  highSpeedMax: TEST_LAUNCH.high.speed[1],
+  highAngleMin: TEST_LAUNCH.high.angle[0],
+  highAngleMax: TEST_LAUNCH.high.angle[1],
+  lowSpeedMin: TEST_LAUNCH.low.speed[0],
+  lowSpeedMax: TEST_LAUNCH.low.speed[1],
+  lowAngleMin: TEST_LAUNCH.low.angle[0],
+  lowAngleMax: TEST_LAUNCH.low.angle[1],
   simHz: 120,
   debugOverlay: true,
-  patternRadius: 5,
-  aimAssist: 0,
 };
 
 export const tuning: Tuning = { ...defaultTuning };
