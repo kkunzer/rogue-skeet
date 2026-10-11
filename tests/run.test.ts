@@ -182,7 +182,7 @@ describe('run state machine', () => {
     expect(ctl.phase).toBe('playing'); // shell fired, burst not yet resolved
   });
 
-  it('boss: cleared when shells remain at the end of the flurry, lost if the pool is empty', () => {
+  it('boss: cleared at the end of the flurry, even on the last shell; lost if shells run out with clays live', () => {
     const win = make([tinyBoss({ shells: 2 })]);
     win.startRound();
     until(win, () => win.world.liveClays().some((c) => c.age > 0.4));
@@ -199,7 +199,16 @@ describe('run state machine', () => {
     shootFirst(spent);
     until(spent, () => spent.over);
     expect(spent.shells).toBe(0);
-    expect(spent.phase).toBe('lost');
+    expect(spent.phase).toBe('won'); // last shell broke the last clay: same as a normal round
+
+    const missed = make([tinyBoss({ shells: 1 })]);
+    missed.startRound();
+    until(missed, () => missed.world.liveClays().some((c) => c.age > 0.4));
+    const w = missed.world;
+    expect(missed.fire({ aim: { x: 2, y: 158 }, t: w.time })).not.toBeNull(); // far corner: a sure miss
+    until(missed, () => missed.over);
+    expect(missed.shells).toBe(0);
+    expect(missed.phase).toBe('lost');
   });
 
   it('the boss has its own pool and a full-size flurry', () => {

@@ -18,7 +18,7 @@
 | Upgrades (6) | Explosive fragments, Chain shatter (together they make the named synergy **Shrapnel Storm**), Slug, Smaller-radius-2x-score curse, Wind gusts, Heavier gravity |
 | Audio | CC0 samples layered with pitch/volume variation in Web Audio. Every sound cue has a procedural synth fallback. |
 | Shell economy | Every shot spends a shell, and an escaped clay costs one more. Hitting 0 with clays still live or scheduled ends the run. |
-| Boss clear | The boss has its own shell pool. You clear it if you still have shells when the flurry ends. |
+| Boss clear | The boss has its own shell pool and clears like a round: reach the end of the flurry without running out of shells while clays are live (breaking the last clay with the last shell counts). |
 
 Out of scope: meta-progression, extra stations, heat, daily seed, monetization, and art beyond stylized vector.
 

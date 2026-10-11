@@ -67,8 +67,8 @@ const emptyBreaks = (): Record<ClayTypeId, number> => ({
  * intro -> playing -> roundClear -> draft -> intro ... -> boss -> won | lost.
  *
  * Shell economy: every shot costs 1 shell and an escaped clay costs 1 more (splitter children
- * too). Reaching 0 shells with clays live or still scheduled loses the run. A round that finishes
- * ends the round whatever the pool; the boss is cleared only if shells remain when the flurry ends.
+ * too). Reaching 0 shells with clays live or still scheduled loses the run. A round (boss
+ * included) that reaches its end is cleared whatever the pool, even if the last shell broke the last clay.
  */
 export class RunController {
   readonly events = new EventBus<RunEvents>();
@@ -276,7 +276,7 @@ export class RunController {
   private finishRound(): void {
     if (this.phase !== 'playing') return;
     if (this.isBoss) {
-      this.finish(this.shells > 0);
+      this.finish(true);
     } else {
       this.setPhase('roundClear');
     }
