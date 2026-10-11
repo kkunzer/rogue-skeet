@@ -28,6 +28,8 @@ export class FieldView {
   private world: World | null = null;
   private offs: (() => void)[] = [];
   private fx: Fx[] = [];
+  /** Flat expanding ring on each break. The juice layer replaces it with the real flash. */
+  breakRing = true;
 
   constructor(private readonly cfg: SimConfig) {
     this.root.addChild(this.g);
@@ -50,6 +52,7 @@ export class FieldView {
         });
       }),
       world.events.on('break', ({ clay, t }) => {
+        if (!this.breakRing) return;
         this.fx.push({
           x: clay.x,
           y: clay.y,

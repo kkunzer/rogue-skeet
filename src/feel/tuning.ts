@@ -17,8 +17,93 @@ export interface SandboxConfig {
   lowAngleMax: number;
 }
 
+/** Presentation ("juice") tunables: shatter VFX, shake, hit-stop, audio variance, haptic patterns. */
+export interface JuiceTuning {
+  /** Shards per normal hit (random in [min, max]) and per perfect hit. */
+  shardCountMin: number;
+  shardCountMax: number;
+  shardCountPerfect: number;
+  /** Shard velocity added along the shot direction, world units / s. */
+  shardImpulse: number;
+  /** Shard velocity pushed radially out of the clay centre, world units / s. */
+  shardExplode: number;
+  /** Random fraction of speed added to every shard velocity component (0..1). */
+  shardJitter: number;
+  /** Max shard spin, rad / s. */
+  shardSpin: number;
+  /** Multiplier on sim gravity for debris. */
+  shardGravityScale: number;
+  /** Debris reaches full desaturation after this long. */
+  debrisDesatMs: number;
+  /** Debris starts fading here and is gone at `debrisLifeMs`. */
+  debrisFadeStartMs: number;
+  debrisLifeMs: number;
+  /** Dust puff particles per hit (scaled by quality) and their life. */
+  dustCount: number;
+  dustLifeMs: number;
+  /** Extra bright sparks on a perfect hit. */
+  sparkCountPerfect: number;
+  /** Impact flash ring: radius multiplier on the clay radius, life, and perfect-hit multiplier. */
+  flashRadiusMul: number;
+  flashLifeMs: number;
+  flashPerfectMul: number;
+  /** Screen shake amplitude (world units) for a quality-1 hit, the perfect-hit amplitude, and decay /s. */
+  shakeAmp: number;
+  shakeAmpPerfect: number;
+  shakeDecay: number;
+  /** Hit-stop (visual freeze) in ms: lerped from min to max by hit quality. 0 disables. */
+  hitStopMinMs: number;
+  hitStopMaxMs: number;
+  /** Subtle puff where a pattern burst missed. */
+  missPuff: boolean;
+  /** Audio: pitch variance (+/- fraction), gain variance (+/- fraction), combo ladder. */
+  pitchVar: number;
+  gainVar: number;
+  comboStepSemitones: number;
+  comboMaxSteps: number;
+  /** Haptic patterns (ms). Perfect = [perfectMs, 24, perfectTailMs]. */
+  hapticShotMs: number;
+  hapticHitMs: number;
+  hapticPerfectMs: number;
+  hapticPerfectTailMs: number;
+}
+
+export const defaultJuiceTuning: Readonly<JuiceTuning> = {
+  shardCountMin: 6,
+  shardCountMax: 9,
+  shardCountPerfect: 12,
+  shardImpulse: 30,
+  shardExplode: 16,
+  shardJitter: 0.35,
+  shardSpin: 16,
+  shardGravityScale: 1,
+  debrisDesatMs: 250,
+  debrisFadeStartMs: 220,
+  debrisLifeMs: 600,
+  dustCount: 6,
+  dustLifeMs: 380,
+  sparkCountPerfect: 10,
+  flashRadiusMul: 2.6,
+  flashLifeMs: 190,
+  flashPerfectMul: 1.6,
+  shakeAmp: 0.45,
+  shakeAmpPerfect: 1.1,
+  shakeDecay: 16,
+  hitStopMinMs: 40,
+  hitStopMaxMs: 60,
+  missPuff: true,
+  pitchVar: 0.08,
+  gainVar: 0.12,
+  comboStepSemitones: 2,
+  comboMaxSteps: 8,
+  hapticShotMs: 8,
+  hapticHitMs: 16,
+  hapticPerfectMs: 24,
+  hapticPerfectTailMs: 14,
+};
+
 /** Every tunable lives in this one typed object. Dev panel (?dev) edits it live. */
-export interface Tuning extends SimConfig, InputConfig, SandboxConfig {
+export interface Tuning extends SimConfig, InputConfig, SandboxConfig, JuiceTuning {
   /** Fixed sim rate in Hz. */
   simHz: number;
   /** Show the FPS / input latency overlay. */
@@ -28,6 +113,7 @@ export interface Tuning extends SimConfig, InputConfig, SandboxConfig {
 export const defaultTuning: Readonly<Tuning> = {
   ...defaultSimConfig,
   ...defaultInputConfig,
+  ...defaultJuiceTuning,
   doubleChance: 0.25,
   gapMin: 0.8,
   gapMax: 1.8,

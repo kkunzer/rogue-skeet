@@ -29,6 +29,7 @@ export class Stage {
   private bgGfx = new Graphics();
   private resizeCbs = new Set<(l: Layout) => void>();
   private host!: HTMLElement;
+  private worldBase = { x: 0, y: 0 };
 
   async init(host: HTMLElement): Promise<void> {
     this.host = host;
@@ -67,13 +68,23 @@ export class Stage {
     return this.screenToWorld({ x: clientX - r.left, y: clientY - r.top });
   }
 
+  /**
+   * Screen shake: offset the whole playfield by (dx, dy) world units (y up). Visual only: input
+   * mapping (`clientToWorld`) deliberately ignores it, so aim and sim are unaffected.
+   */
+  setShake(dx: number, dy: number): void {
+    const k = this.layout.scale;
+    this.world.position.set(this.worldBase.x + dx * k, this.worldBase.y - dy * k);
+  }
+
   private relayout(): void {
     const w = this.host.clientWidth || window.innerWidth;
     const h = this.host.clientHeight || window.innerHeight;
     const l = computeLayout(w, h);
     this.layout = l;
     // World container: y-up. Origin (0,0) is the playfield's bottom-left on screen.
-    this.world.position.set(l.left, l.top + l.height);
+    this.worldBase = { x: l.left, y: l.top + l.height };
+    this.world.position.set(this.worldBase.x, this.worldBase.y);
     this.world.scale.set(l.scale, -l.scale);
     this.drawBackground(l);
     for (const cb of this.resizeCbs) cb(l);

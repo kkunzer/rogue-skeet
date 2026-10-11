@@ -1,4 +1,5 @@
 import { Pane } from 'tweakpane';
+import { feel, saveFeel } from './settings';
 import { defaultTuning, exportTuningJSON, notifyTuningChanged, tuning } from './tuning';
 
 /** Tweakpane dev panel. Imported dynamically from tuning.ts so it never ships in the main chunk. */
@@ -58,10 +59,51 @@ export function createDevPanel(): Pane {
     'lowAngleMax',
   ] as const)
     sb.addBinding(tuning, k, { min: 10, max: 120, step: 0.5 });
+  const jf = pane.addFolder({ title: 'Juice: shatter', expanded: false });
+  jf.addBinding(feel, 'juice', { label: 'juice on' });
+  jf.addBinding(tuning, 'shardCountMin', { min: 3, max: 16, step: 1 });
+  jf.addBinding(tuning, 'shardCountMax', { min: 3, max: 16, step: 1 });
+  jf.addBinding(tuning, 'shardCountPerfect', { min: 3, max: 20, step: 1 });
+  jf.addBinding(tuning, 'shardImpulse', { min: 0, max: 100, step: 1 });
+  jf.addBinding(tuning, 'shardExplode', { min: 0, max: 60, step: 1 });
+  jf.addBinding(tuning, 'shardJitter', { min: 0, max: 1, step: 0.01 });
+  jf.addBinding(tuning, 'shardSpin', { min: 0, max: 40, step: 0.5 });
+  jf.addBinding(tuning, 'shardGravityScale', { min: 0, max: 2, step: 0.05 });
+  jf.addBinding(tuning, 'debrisDesatMs', { min: 50, max: 800, step: 10 });
+  jf.addBinding(tuning, 'debrisFadeStartMs', { min: 0, max: 800, step: 10 });
+  jf.addBinding(tuning, 'debrisLifeMs', { min: 100, max: 1500, step: 10 });
+  jf.addBinding(tuning, 'dustCount', { min: 0, max: 20, step: 1 });
+  jf.addBinding(tuning, 'dustLifeMs', { min: 100, max: 1000, step: 10 });
+  jf.addBinding(tuning, 'sparkCountPerfect', { min: 0, max: 30, step: 1 });
+  jf.addBinding(tuning, 'flashRadiusMul', { min: 1, max: 5, step: 0.1 });
+  jf.addBinding(tuning, 'flashLifeMs', { min: 50, max: 600, step: 10 });
+  jf.addBinding(tuning, 'flashPerfectMul', { min: 1, max: 3, step: 0.05 });
+  jf.addBinding(tuning, 'missPuff');
+  const jm = pane.addFolder({ title: 'Juice: shake / hit-stop', expanded: false });
+  jm.addBinding(tuning, 'shakeAmp', { min: 0, max: 3, step: 0.05 });
+  jm.addBinding(tuning, 'shakeAmpPerfect', { min: 0, max: 4, step: 0.05 });
+  jm.addBinding(tuning, 'shakeDecay', { min: 2, max: 50, step: 0.5 });
+  jm.addBinding(tuning, 'hitStopMinMs', { min: 0, max: 120, step: 1 });
+  jm.addBinding(tuning, 'hitStopMaxMs', { min: 0, max: 120, step: 1 });
+  const ja = pane.addFolder({ title: 'Juice: audio / haptics', expanded: false });
+  ja.addBinding(feel, 'volume', { min: 0, max: 1, step: 0.01, label: 'master volume' });
+  ja.addBinding(feel, 'sound', { label: 'sound on' });
+  ja.addBinding(tuning, 'pitchVar', { min: 0, max: 0.3, step: 0.005 });
+  ja.addBinding(tuning, 'gainVar', { min: 0, max: 0.5, step: 0.005 });
+  ja.addBinding(tuning, 'comboStepSemitones', { min: 0, max: 5, step: 0.5 });
+  ja.addBinding(tuning, 'comboMaxSteps', { min: 0, max: 16, step: 1 });
+  ja.addBinding(feel, 'haptics', { label: 'haptics on' });
+  ja.addBinding(tuning, 'hapticShotMs', { min: 1, max: 60, step: 1 });
+  ja.addBinding(tuning, 'hapticHitMs', { min: 1, max: 60, step: 1 });
+  ja.addBinding(tuning, 'hapticPerfectMs', { min: 1, max: 80, step: 1 });
+  ja.addBinding(tuning, 'hapticPerfectTailMs', { min: 1, max: 80, step: 1 });
   const dbg = pane.addFolder({ title: 'Debug' });
   dbg.addBinding(tuning, 'debugOverlay');
 
-  pane.on('change', () => notifyTuningChanged());
+  pane.on('change', () => {
+    saveFeel();
+    notifyTuningChanged();
+  });
 
   pane
     .addButton({ title: 'Copy JSON' })
