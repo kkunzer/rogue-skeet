@@ -1,0 +1,3774 @@
+{
+  "schema": "rogue-skeet.control-test",
+  "version": 1,
+  "buildSha": "fixture",
+  "createdAt": "2026-10-12T12:00:00.000Z",
+  "updatedAt": "2026-10-12T12:00:13.000Z",
+  "complete": true,
+  "tester": { "id": "alice", "handedness": "right" },
+  "device": {
+    "userAgent": "fixture",
+    "platform": "fixture",
+    "language": "en",
+    "screen": { "w": 393, "h": 851, "dpr": 2.75 },
+    "viewport": { "w": 393, "h": 780 },
+    "maxTouchPoints": 5,
+    "hardwareConcurrency": 8
+  },
+  "settings": {
+    "gravity": 38,
+    "drag": 0.15,
+    "shotBaseTime": 0.12,
+    "shotSpeed": 450,
+    "patternRadius": 5,
+    "clayRadius": 2.2,
+    "aimAssist": 0,
+    "perfectFrac": 0.35,
+    "barrels": 2,
+    "gunCycle": 0.12,
+    "gunReload": 0.7,
+    "handed": "right",
+    "tapOffsetY": 0,
+    "ghostTrail": false,
+    "reticleOffsetX": 5,
+    "reticleOffsetY": 16,
+    "quickTapMs": 220,
+    "dragSlop": 1.5,
+    "flickMinSpeed": 60,
+    "flickMaxSpeed": 500,
+    "flickDistMin": 24,
+    "flickDistMax": 100,
+    "flickGamma": 1,
+    "flickWindowMs": 90,
+    "flickMinTravel": 3,
+    "doubleChance": 0.25,
+    "gapMin": 0.8,
+    "gapMax": 1.8,
+    "highSpeedMin": 70,
+    "highSpeedMax": 86,
+    "highAngleMin": 44,
+    "highAngleMax": 62,
+    "lowSpeedMin": 62,
+    "lowSpeedMax": 80,
+    "lowAngleMin": 48,
+    "lowAngleMax": 66,
+    "simHz": 120,
+    "debugOverlay": true
+  },
+  "testSeed": "control-test-v1",
+  "attemptsPerScheme": 2,
+  "schemeOrder": ["flick", "drag", "tap"],
+  "schemes": [
+    {
+      "scheme": "flick",
+      "position": 0,
+      "feelRating": 4,
+      "attempts": [
+        {
+          "attempt": 1,
+          "startedAt": "2026-10-12T12:00:00.000Z",
+          "durationMs": 66242,
+          "clays": 24,
+          "broken": 3,
+          "throwsCleared": 1,
+          "hitRate": 0.125,
+          "strayShots": 0,
+          "throws": [
+            {
+              "index": 0,
+              "kind": "single",
+              "launchT": 1208,
+              "clays": [
+                { "id": 1, "house": "high", "launchT": 1208, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 2017,
+                  "arriveT": 2269,
+                  "barrel": 0,
+                  "aim": { "x": 44.3, "y": 80.64 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 1,
+                  "missVector": { "x": -9.03, "y": -5.64 },
+                  "missDist": 10.64,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 1,
+              "kind": "single",
+              "launchT": 4492,
+              "clays": [
+                { "id": 2, "house": "low", "launchT": 4492, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 5300,
+                  "arriveT": 5504,
+                  "barrel": 1,
+                  "aim": { "x": 38.95, "y": 58.46 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 2,
+                  "missVector": { "x": 8.91, "y": -3.79 },
+                  "missDist": 9.68,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 2,
+              "kind": "single",
+              "launchT": 7267,
+              "clays": [
+                { "id": 3, "house": "high", "launchT": 7267, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 8075,
+                  "arriveT": 8324,
+                  "barrel": 0,
+                  "aim": { "x": 42.61, "y": 79.1 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 3,
+                  "missVector": { "x": -8.43, "y": -5.14 },
+                  "missDist": 9.87,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 3,
+              "kind": "double",
+              "launchT": 10733,
+              "clays": [
+                { "id": 4, "house": "high", "launchT": 10733, "broken": false, "brokenT": null },
+                { "id": 5, "house": "low", "launchT": 10850, "broken": true, "brokenT": 11774 }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 11542,
+                  "arriveT": 11774,
+                  "barrel": 1,
+                  "aim": { "x": 51.97, "y": 71.04 },
+                  "hit": true,
+                  "perfect": false,
+                  "broke": [5],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 4,
+              "kind": "single",
+              "launchT": 13658,
+              "clays": [
+                { "id": 6, "house": "high", "launchT": 13658, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 14467,
+                  "arriveT": 14731,
+                  "barrel": 0,
+                  "aim": { "x": 47.76, "y": 86.01 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 6,
+                  "missVector": { "x": -10.49, "y": -7.47 },
+                  "missDist": 12.88,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 5,
+              "kind": "single",
+              "launchT": 16658,
+              "clays": [
+                { "id": 7, "house": "high", "launchT": 16658, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 17467,
+                  "arriveT": 17732,
+                  "barrel": 1,
+                  "aim": { "x": 43.63, "y": 86.2 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 7,
+                  "missVector": { "x": -9.26, "y": -7.53 },
+                  "missDist": 11.93,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 6,
+              "kind": "single",
+              "launchT": 20017,
+              "clays": [
+                { "id": 8, "house": "low", "launchT": 20017, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 20825,
+                  "arriveT": 21046,
+                  "barrel": 0,
+                  "aim": { "x": 47.97, "y": 66.22 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 8,
+                  "missVector": { "x": 7.33, "y": -5.98 },
+                  "missDist": 9.46,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 7,
+              "kind": "single",
+              "launchT": 23550,
+              "clays": [
+                { "id": 9, "house": "low", "launchT": 23550, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 24358,
+                  "arriveT": 24560,
+                  "barrel": 1,
+                  "aim": { "x": 49.32, "y": 57.36 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 9,
+                  "missVector": { "x": 6.39, "y": -3.49 },
+                  "missDist": 7.28,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 8,
+              "kind": "single",
+              "launchT": 26633,
+              "clays": [
+                { "id": 10, "house": "high", "launchT": 26633, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 27442,
+                  "arriveT": 27709,
+                  "barrel": 0,
+                  "aim": { "x": 45.03, "y": 87.33 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 10,
+                  "missVector": { "x": -9.77, "y": -7.93 },
+                  "missDist": 12.58,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 9,
+              "kind": "single",
+              "launchT": 29858,
+              "clays": [
+                { "id": 11, "house": "low", "launchT": 29858, "broken": true, "brokenT": 30861 }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 30667,
+                  "arriveT": 30861,
+                  "barrel": 1,
+                  "aim": { "x": 49.28, "y": 53.95 },
+                  "hit": true,
+                  "perfect": false,
+                  "broke": [11],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 10,
+              "kind": "double",
+              "launchT": 31875,
+              "clays": [
+                { "id": 12, "house": "high", "launchT": 31875, "broken": false, "brokenT": null },
+                { "id": 13, "house": "low", "launchT": 31950, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 32683,
+                  "arriveT": 32923,
+                  "barrel": 0,
+                  "aim": { "x": 55.79, "y": 73.68 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 13,
+                  "missVector": { "x": 5.98, "y": 4.59 },
+                  "missDist": 7.54,
+                  "classified": "high"
+                },
+                {
+                  "t": 32808,
+                  "arriveT": 33030,
+                  "barrel": 1,
+                  "aim": { "x": 52.81, "y": 66.17 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 13,
+                  "missVector": { "x": 5.76, "y": -5.16 },
+                  "missDist": 7.74,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 11,
+              "kind": "single",
+              "launchT": 35567,
+              "clays": [
+                { "id": 14, "house": "high", "launchT": 35567, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 36375,
+                  "arriveT": 36639,
+                  "barrel": 0,
+                  "aim": { "x": 42.52, "y": 85.77 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 14,
+                  "missVector": { "x": -8.89, "y": -7.38 },
+                  "missDist": 11.56,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 12,
+              "kind": "single",
+              "launchT": 39042,
+              "clays": [
+                { "id": 15, "house": "low", "launchT": 39042, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 39850,
+                  "arriveT": 40066,
+                  "barrel": 1,
+                  "aim": { "x": 48.69, "y": 63.91 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 15,
+                  "missVector": { "x": 6.99, "y": -5.3 },
+                  "missDist": 8.77,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 13,
+              "kind": "single",
+              "launchT": 42658,
+              "clays": [
+                { "id": 16, "house": "high", "launchT": 42658, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 43467,
+                  "arriveT": 43735,
+                  "barrel": 0,
+                  "aim": { "x": 46.4, "y": 87.67 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 16,
+                  "missVector": { "x": -10.22, "y": -8.05 },
+                  "missDist": 13.01,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 14,
+              "kind": "double",
+              "launchT": 45767,
+              "clays": [
+                { "id": 17, "house": "high", "launchT": 45767, "broken": false, "brokenT": null },
+                { "id": 18, "house": "low", "launchT": 45783, "broken": true, "brokenT": 46820 }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 46575,
+                  "arriveT": 46820,
+                  "barrel": 1,
+                  "aim": { "x": 41.44, "y": 77.23 },
+                  "hit": true,
+                  "perfect": false,
+                  "broke": [18],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 15,
+              "kind": "single",
+              "launchT": 49567,
+              "clays": [
+                { "id": 19, "house": "high", "launchT": 49567, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 50375,
+                  "arriveT": 50616,
+                  "barrel": 0,
+                  "aim": { "x": 49.21, "y": 75.23 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 19,
+                  "missVector": { "x": -9.97, "y": -3.95 },
+                  "missDist": 10.72,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 16,
+              "kind": "single",
+              "launchT": 52467,
+              "clays": [
+                { "id": 20, "house": "low", "launchT": 52467, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 53275,
+                  "arriveT": 53494,
+                  "barrel": 1,
+                  "aim": { "x": 51.54, "y": 64.92 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 20,
+                  "missVector": { "x": 6.37, "y": -5.61 },
+                  "missDist": 8.49,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 17,
+              "kind": "double",
+              "launchT": 56100,
+              "clays": [
+                { "id": 21, "house": "high", "launchT": 56100, "broken": false, "brokenT": null },
+                { "id": 22, "house": "low", "launchT": 56167, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 56908,
+                  "arriveT": 57169,
+                  "barrel": 0,
+                  "aim": { "x": 51.49, "y": 83.9 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 21,
+                  "missVector": { "x": -11.44, "y": -6.74 },
+                  "missDist": 13.28,
+                  "classified": "behind"
+                },
+                {
+                  "t": 57033,
+                  "arriveT": 57259,
+                  "barrel": 1,
+                  "aim": { "x": 45.36, "y": 68.47 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 22,
+                  "missVector": { "x": 7.58, "y": -5.65 },
+                  "missDist": 9.45,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 18,
+              "kind": "single",
+              "launchT": 59633,
+              "clays": [
+                { "id": 23, "house": "low", "launchT": 59633, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 60442,
+                  "arriveT": 60650,
+                  "barrel": 0,
+                  "aim": { "x": 40.26, "y": 60.43 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 23,
+                  "missVector": { "x": 8.77, "y": -4.31 },
+                  "missDist": 9.77,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 19,
+              "kind": "single",
+              "launchT": 62500,
+              "clays": [
+                { "id": 24, "house": "low", "launchT": 62500, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 63308,
+                  "arriveT": 63531,
+                  "barrel": 1,
+                  "aim": { "x": 53.47, "y": 66.43 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 24,
+                  "missVector": { "x": 6, "y": -6.08 },
+                  "missDist": 8.54,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            }
+          ]
+        },
+        {
+          "attempt": 2,
+          "startedAt": "2026-10-12T12:00:00.000Z",
+          "durationMs": 36642,
+          "clays": 24,
+          "broken": 24,
+          "throwsCleared": 20,
+          "hitRate": 1,
+          "strayShots": 0,
+          "throws": [
+            {
+              "index": 0,
+              "kind": "single",
+              "launchT": 1208,
+              "clays": [
+                { "id": 1, "house": "high", "launchT": 1208, "broken": true, "brokenT": 1904 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 1658,
+                  "arriveT": 1904,
+                  "barrel": 0,
+                  "aim": { "x": 40.15, "y": 77.26 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [1],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 1,
+              "kind": "single",
+              "launchT": 2917,
+              "clays": [
+                { "id": 2, "house": "low", "launchT": 2917, "broken": true, "brokenT": 3560 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 3367,
+                  "arriveT": 3560,
+                  "barrel": 1,
+                  "aim": { "x": 46.33, "y": 54.16 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [2],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 2,
+              "kind": "single",
+              "launchT": 4567,
+              "clays": [
+                { "id": 3, "house": "high", "launchT": 4567, "broken": true, "brokenT": 5259 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 5017,
+                  "arriveT": 5259,
+                  "barrel": 0,
+                  "aim": { "x": 38.59, "y": 75.83 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [3],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 3,
+              "kind": "double",
+              "launchT": 6267,
+              "clays": [
+                { "id": 4, "house": "high", "launchT": 6267, "broken": true, "brokenT": 6942 },
+                { "id": 5, "house": "low", "launchT": 6383, "broken": true, "brokenT": 7649 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 6717,
+                  "arriveT": 6942,
+                  "barrel": 1,
+                  "aim": { "x": 45.89, "y": 68.51 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [4],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                },
+                {
+                  "t": 7417,
+                  "arriveT": 7649,
+                  "barrel": 0,
+                  "aim": { "x": 39.44, "y": 71.42 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [5],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 4,
+              "kind": "single",
+              "launchT": 8658,
+              "clays": [
+                { "id": 6, "house": "high", "launchT": 8658, "broken": true, "brokenT": 9365 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 9108,
+                  "arriveT": 9365,
+                  "barrel": 1,
+                  "aim": { "x": 43.61, "y": 82.34 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [6],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 5,
+              "kind": "single",
+              "launchT": 10375,
+              "clays": [
+                { "id": 7, "house": "high", "launchT": 10375, "broken": true, "brokenT": 11082 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 10825,
+                  "arriveT": 11082,
+                  "barrel": 0,
+                  "aim": { "x": 39.99, "y": 82.54 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [7],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 6,
+              "kind": "single",
+              "launchT": 12092,
+              "clays": [
+                { "id": 8, "house": "low", "launchT": 12092, "broken": true, "brokenT": 12752 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 12542,
+                  "arriveT": 12752,
+                  "barrel": 1,
+                  "aim": { "x": 53.01, "y": 61.07 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [8],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 7,
+              "kind": "single",
+              "launchT": 13767,
+              "clays": [
+                { "id": 9, "house": "low", "launchT": 13767, "broken": true, "brokenT": 14412 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 14217,
+                  "arriveT": 14412,
+                  "barrel": 0,
+                  "aim": { "x": 54.65, "y": 53.3 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [9],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 8,
+              "kind": "single",
+              "launchT": 15425,
+              "clays": [
+                { "id": 10, "house": "high", "launchT": 15425, "broken": true, "brokenT": 16134 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 15875,
+                  "arriveT": 16134,
+                  "barrel": 1,
+                  "aim": { "x": 41.32, "y": 83.62 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [10],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 9,
+              "kind": "single",
+              "launchT": 17150,
+              "clays": [
+                { "id": 11, "house": "low", "launchT": 17150, "broken": true, "brokenT": 17789 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 17600,
+                  "arriveT": 17789,
+                  "barrel": 0,
+                  "aim": { "x": 54.82, "y": 50.4 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [11],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 10,
+              "kind": "double",
+              "launchT": 18800,
+              "clays": [
+                { "id": 12, "house": "high", "launchT": 18800, "broken": true, "brokenT": 19481 },
+                { "id": 13, "house": "low", "launchT": 18875, "broken": true, "brokenT": 20198 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 19250,
+                  "arriveT": 19481,
+                  "barrel": 1,
+                  "aim": { "x": 49.4, "y": 70.87 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [12],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                },
+                {
+                  "t": 19958,
+                  "arriveT": 20198,
+                  "barrel": 0,
+                  "aim": { "x": 40.95, "y": 74.68 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [13],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 11,
+              "kind": "single",
+              "launchT": 21208,
+              "clays": [
+                { "id": 14, "house": "high", "launchT": 21208, "broken": true, "brokenT": 21915 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 21658,
+                  "arriveT": 21915,
+                  "barrel": 1,
+                  "aim": { "x": 39, "y": 82.13 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [14],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 12,
+              "kind": "single",
+              "launchT": 22925,
+              "clays": [
+                { "id": 15, "house": "low", "launchT": 22925, "broken": true, "brokenT": 23582 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 23375,
+                  "arriveT": 23582,
+                  "barrel": 0,
+                  "aim": { "x": 53.74, "y": 59.01 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [15],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 13,
+              "kind": "single",
+              "launchT": 24592,
+              "clays": [
+                { "id": 16, "house": "high", "launchT": 24592, "broken": true, "brokenT": 25302 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 25042,
+                  "arriveT": 25302,
+                  "barrel": 1,
+                  "aim": { "x": 42.55, "y": 83.94 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [16],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 14,
+              "kind": "double",
+              "launchT": 26317,
+              "clays": [
+                { "id": 17, "house": "high", "launchT": 26317, "broken": true, "brokenT": 27006 },
+                { "id": 18, "house": "low", "launchT": 26333, "broken": true, "brokenT": 27112 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 26767,
+                  "arriveT": 27006,
+                  "barrel": 0,
+                  "aim": { "x": 37.46, "y": 74.12 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [17],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                },
+                {
+                  "t": 26892,
+                  "arriveT": 27112,
+                  "barrel": 1,
+                  "aim": { "x": 49.18, "y": 66.15 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [18],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 15,
+              "kind": "single",
+              "launchT": 28125,
+              "clays": [
+                { "id": 19, "house": "high", "launchT": 28125, "broken": true, "brokenT": 28809 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 28575,
+                  "arriveT": 28809,
+                  "barrel": 0,
+                  "aim": { "x": 43.92, "y": 72.26 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [19],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 16,
+              "kind": "single",
+              "launchT": 29825,
+              "clays": [
+                { "id": 20, "house": "low", "launchT": 29825, "broken": true, "brokenT": 30485 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 30275,
+                  "arriveT": 30485,
+                  "barrel": 1,
+                  "aim": { "x": 55.98, "y": 59.96 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [20],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 17,
+              "kind": "double",
+              "launchT": 31500,
+              "clays": [
+                { "id": 21, "house": "high", "launchT": 31500, "broken": true, "brokenT": 32202 },
+                { "id": 22, "house": "low", "launchT": 31567, "broken": true, "brokenT": 32291 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 31950,
+                  "arriveT": 32202,
+                  "barrel": 0,
+                  "aim": { "x": 46.68, "y": 80.31 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [21],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                },
+                {
+                  "t": 32075,
+                  "arriveT": 32291,
+                  "barrel": 1,
+                  "aim": { "x": 50.29, "y": 63.8 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [22],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 18,
+              "kind": "single",
+              "launchT": 33300,
+              "clays": [
+                { "id": 23, "house": "low", "launchT": 33300, "broken": true, "brokenT": 33948 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 33750,
+                  "arriveT": 33948,
+                  "barrel": 0,
+                  "aim": { "x": 47.21, "y": 55.86 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [23],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 19,
+              "kind": "single",
+              "launchT": 34958,
+              "clays": [
+                { "id": 24, "house": "low", "launchT": 34958, "broken": true, "brokenT": 35622 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 35408,
+                  "arriveT": 35622,
+                  "barrel": 1,
+                  "aim": { "x": 57.47, "y": 61.35 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [24],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scheme": "drag",
+      "position": 1,
+      "feelRating": 3,
+      "attempts": [
+        {
+          "attempt": 1,
+          "startedAt": "2026-10-12T12:00:00.000Z",
+          "durationMs": 66242,
+          "clays": 24,
+          "broken": 3,
+          "throwsCleared": 1,
+          "hitRate": 0.125,
+          "strayShots": 0,
+          "throws": [
+            {
+              "index": 0,
+              "kind": "single",
+              "launchT": 1208,
+              "clays": [
+                { "id": 1, "house": "high", "launchT": 1208, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 2017,
+                  "arriveT": 2269,
+                  "barrel": 0,
+                  "aim": { "x": 44.3, "y": 80.64 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 1,
+                  "missVector": { "x": -9.03, "y": -5.64 },
+                  "missDist": 10.64,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 1,
+              "kind": "single",
+              "launchT": 4492,
+              "clays": [
+                { "id": 2, "house": "low", "launchT": 4492, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 5300,
+                  "arriveT": 5504,
+                  "barrel": 1,
+                  "aim": { "x": 38.95, "y": 58.46 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 2,
+                  "missVector": { "x": 8.91, "y": -3.79 },
+                  "missDist": 9.68,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 2,
+              "kind": "single",
+              "launchT": 7267,
+              "clays": [
+                { "id": 3, "house": "high", "launchT": 7267, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 8075,
+                  "arriveT": 8324,
+                  "barrel": 0,
+                  "aim": { "x": 42.61, "y": 79.1 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 3,
+                  "missVector": { "x": -8.43, "y": -5.14 },
+                  "missDist": 9.87,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 3,
+              "kind": "double",
+              "launchT": 10733,
+              "clays": [
+                { "id": 4, "house": "high", "launchT": 10733, "broken": false, "brokenT": null },
+                { "id": 5, "house": "low", "launchT": 10850, "broken": true, "brokenT": 11774 }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 11542,
+                  "arriveT": 11774,
+                  "barrel": 1,
+                  "aim": { "x": 51.97, "y": 71.04 },
+                  "hit": true,
+                  "perfect": false,
+                  "broke": [5],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 4,
+              "kind": "single",
+              "launchT": 13658,
+              "clays": [
+                { "id": 6, "house": "high", "launchT": 13658, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 14467,
+                  "arriveT": 14731,
+                  "barrel": 0,
+                  "aim": { "x": 47.76, "y": 86.01 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 6,
+                  "missVector": { "x": -10.49, "y": -7.47 },
+                  "missDist": 12.88,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 5,
+              "kind": "single",
+              "launchT": 16658,
+              "clays": [
+                { "id": 7, "house": "high", "launchT": 16658, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 17467,
+                  "arriveT": 17732,
+                  "barrel": 1,
+                  "aim": { "x": 43.63, "y": 86.2 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 7,
+                  "missVector": { "x": -9.26, "y": -7.53 },
+                  "missDist": 11.93,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 6,
+              "kind": "single",
+              "launchT": 20017,
+              "clays": [
+                { "id": 8, "house": "low", "launchT": 20017, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 20825,
+                  "arriveT": 21046,
+                  "barrel": 0,
+                  "aim": { "x": 47.97, "y": 66.22 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 8,
+                  "missVector": { "x": 7.33, "y": -5.98 },
+                  "missDist": 9.46,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 7,
+              "kind": "single",
+              "launchT": 23550,
+              "clays": [
+                { "id": 9, "house": "low", "launchT": 23550, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 24358,
+                  "arriveT": 24560,
+                  "barrel": 1,
+                  "aim": { "x": 49.32, "y": 57.36 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 9,
+                  "missVector": { "x": 6.39, "y": -3.49 },
+                  "missDist": 7.28,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 8,
+              "kind": "single",
+              "launchT": 26633,
+              "clays": [
+                { "id": 10, "house": "high", "launchT": 26633, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 27442,
+                  "arriveT": 27709,
+                  "barrel": 0,
+                  "aim": { "x": 45.03, "y": 87.33 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 10,
+                  "missVector": { "x": -9.77, "y": -7.93 },
+                  "missDist": 12.58,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 9,
+              "kind": "single",
+              "launchT": 29858,
+              "clays": [
+                { "id": 11, "house": "low", "launchT": 29858, "broken": true, "brokenT": 30861 }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 30667,
+                  "arriveT": 30861,
+                  "barrel": 1,
+                  "aim": { "x": 49.28, "y": 53.95 },
+                  "hit": true,
+                  "perfect": false,
+                  "broke": [11],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 10,
+              "kind": "double",
+              "launchT": 31875,
+              "clays": [
+                { "id": 12, "house": "high", "launchT": 31875, "broken": false, "brokenT": null },
+                { "id": 13, "house": "low", "launchT": 31950, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 32683,
+                  "arriveT": 32923,
+                  "barrel": 0,
+                  "aim": { "x": 55.79, "y": 73.68 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 13,
+                  "missVector": { "x": 5.98, "y": 4.59 },
+                  "missDist": 7.54,
+                  "classified": "high"
+                },
+                {
+                  "t": 32808,
+                  "arriveT": 33030,
+                  "barrel": 1,
+                  "aim": { "x": 52.81, "y": 66.17 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 13,
+                  "missVector": { "x": 5.76, "y": -5.16 },
+                  "missDist": 7.74,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 11,
+              "kind": "single",
+              "launchT": 35567,
+              "clays": [
+                { "id": 14, "house": "high", "launchT": 35567, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 36375,
+                  "arriveT": 36639,
+                  "barrel": 0,
+                  "aim": { "x": 42.52, "y": 85.77 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 14,
+                  "missVector": { "x": -8.89, "y": -7.38 },
+                  "missDist": 11.56,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 12,
+              "kind": "single",
+              "launchT": 39042,
+              "clays": [
+                { "id": 15, "house": "low", "launchT": 39042, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 39850,
+                  "arriveT": 40066,
+                  "barrel": 1,
+                  "aim": { "x": 48.69, "y": 63.91 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 15,
+                  "missVector": { "x": 6.99, "y": -5.3 },
+                  "missDist": 8.77,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 13,
+              "kind": "single",
+              "launchT": 42658,
+              "clays": [
+                { "id": 16, "house": "high", "launchT": 42658, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 43467,
+                  "arriveT": 43735,
+                  "barrel": 0,
+                  "aim": { "x": 46.4, "y": 87.67 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 16,
+                  "missVector": { "x": -10.22, "y": -8.05 },
+                  "missDist": 13.01,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 14,
+              "kind": "double",
+              "launchT": 45767,
+              "clays": [
+                { "id": 17, "house": "high", "launchT": 45767, "broken": false, "brokenT": null },
+                { "id": 18, "house": "low", "launchT": 45783, "broken": true, "brokenT": 46820 }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 46575,
+                  "arriveT": 46820,
+                  "barrel": 1,
+                  "aim": { "x": 41.44, "y": 77.23 },
+                  "hit": true,
+                  "perfect": false,
+                  "broke": [18],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 15,
+              "kind": "single",
+              "launchT": 49567,
+              "clays": [
+                { "id": 19, "house": "high", "launchT": 49567, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 50375,
+                  "arriveT": 50616,
+                  "barrel": 0,
+                  "aim": { "x": 49.21, "y": 75.23 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 19,
+                  "missVector": { "x": -9.97, "y": -3.95 },
+                  "missDist": 10.72,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 16,
+              "kind": "single",
+              "launchT": 52467,
+              "clays": [
+                { "id": 20, "house": "low", "launchT": 52467, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 53275,
+                  "arriveT": 53494,
+                  "barrel": 1,
+                  "aim": { "x": 51.54, "y": 64.92 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 20,
+                  "missVector": { "x": 6.37, "y": -5.61 },
+                  "missDist": 8.49,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 17,
+              "kind": "double",
+              "launchT": 56100,
+              "clays": [
+                { "id": 21, "house": "high", "launchT": 56100, "broken": false, "brokenT": null },
+                { "id": 22, "house": "low", "launchT": 56167, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 56908,
+                  "arriveT": 57169,
+                  "barrel": 0,
+                  "aim": { "x": 51.49, "y": 83.9 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 21,
+                  "missVector": { "x": -11.44, "y": -6.74 },
+                  "missDist": 13.28,
+                  "classified": "behind"
+                },
+                {
+                  "t": 57033,
+                  "arriveT": 57259,
+                  "barrel": 1,
+                  "aim": { "x": 45.36, "y": 68.47 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 22,
+                  "missVector": { "x": 7.58, "y": -5.65 },
+                  "missDist": 9.45,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 18,
+              "kind": "single",
+              "launchT": 59633,
+              "clays": [
+                { "id": 23, "house": "low", "launchT": 59633, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 60442,
+                  "arriveT": 60650,
+                  "barrel": 0,
+                  "aim": { "x": 40.26, "y": 60.43 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 23,
+                  "missVector": { "x": 8.77, "y": -4.31 },
+                  "missDist": 9.77,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 19,
+              "kind": "single",
+              "launchT": 62500,
+              "clays": [
+                { "id": 24, "house": "low", "launchT": 62500, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 63308,
+                  "arriveT": 63531,
+                  "barrel": 1,
+                  "aim": { "x": 53.47, "y": 66.43 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 24,
+                  "missVector": { "x": 6, "y": -6.08 },
+                  "missDist": 8.54,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            }
+          ]
+        },
+        {
+          "attempt": 2,
+          "startedAt": "2026-10-12T12:00:00.000Z",
+          "durationMs": 36642,
+          "clays": 24,
+          "broken": 24,
+          "throwsCleared": 20,
+          "hitRate": 1,
+          "strayShots": 0,
+          "throws": [
+            {
+              "index": 0,
+              "kind": "single",
+              "launchT": 1208,
+              "clays": [
+                { "id": 1, "house": "high", "launchT": 1208, "broken": true, "brokenT": 1904 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 1658,
+                  "arriveT": 1904,
+                  "barrel": 0,
+                  "aim": { "x": 40.15, "y": 77.26 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [1],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 1,
+              "kind": "single",
+              "launchT": 2917,
+              "clays": [
+                { "id": 2, "house": "low", "launchT": 2917, "broken": true, "brokenT": 3560 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 3367,
+                  "arriveT": 3560,
+                  "barrel": 1,
+                  "aim": { "x": 46.33, "y": 54.16 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [2],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 2,
+              "kind": "single",
+              "launchT": 4567,
+              "clays": [
+                { "id": 3, "house": "high", "launchT": 4567, "broken": true, "brokenT": 5259 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 5017,
+                  "arriveT": 5259,
+                  "barrel": 0,
+                  "aim": { "x": 38.59, "y": 75.83 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [3],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 3,
+              "kind": "double",
+              "launchT": 6267,
+              "clays": [
+                { "id": 4, "house": "high", "launchT": 6267, "broken": true, "brokenT": 6942 },
+                { "id": 5, "house": "low", "launchT": 6383, "broken": true, "brokenT": 7649 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 6717,
+                  "arriveT": 6942,
+                  "barrel": 1,
+                  "aim": { "x": 45.89, "y": 68.51 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [4],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                },
+                {
+                  "t": 7417,
+                  "arriveT": 7649,
+                  "barrel": 0,
+                  "aim": { "x": 39.44, "y": 71.42 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [5],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 4,
+              "kind": "single",
+              "launchT": 8658,
+              "clays": [
+                { "id": 6, "house": "high", "launchT": 8658, "broken": true, "brokenT": 9365 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 9108,
+                  "arriveT": 9365,
+                  "barrel": 1,
+                  "aim": { "x": 43.61, "y": 82.34 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [6],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 5,
+              "kind": "single",
+              "launchT": 10375,
+              "clays": [
+                { "id": 7, "house": "high", "launchT": 10375, "broken": true, "brokenT": 11082 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 10825,
+                  "arriveT": 11082,
+                  "barrel": 0,
+                  "aim": { "x": 39.99, "y": 82.54 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [7],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 6,
+              "kind": "single",
+              "launchT": 12092,
+              "clays": [
+                { "id": 8, "house": "low", "launchT": 12092, "broken": true, "brokenT": 12752 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 12542,
+                  "arriveT": 12752,
+                  "barrel": 1,
+                  "aim": { "x": 53.01, "y": 61.07 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [8],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 7,
+              "kind": "single",
+              "launchT": 13767,
+              "clays": [
+                { "id": 9, "house": "low", "launchT": 13767, "broken": true, "brokenT": 14412 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 14217,
+                  "arriveT": 14412,
+                  "barrel": 0,
+                  "aim": { "x": 54.65, "y": 53.3 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [9],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 8,
+              "kind": "single",
+              "launchT": 15425,
+              "clays": [
+                { "id": 10, "house": "high", "launchT": 15425, "broken": true, "brokenT": 16134 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 15875,
+                  "arriveT": 16134,
+                  "barrel": 1,
+                  "aim": { "x": 41.32, "y": 83.62 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [10],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 9,
+              "kind": "single",
+              "launchT": 17150,
+              "clays": [
+                { "id": 11, "house": "low", "launchT": 17150, "broken": true, "brokenT": 17789 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 17600,
+                  "arriveT": 17789,
+                  "barrel": 0,
+                  "aim": { "x": 54.82, "y": 50.4 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [11],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 10,
+              "kind": "double",
+              "launchT": 18800,
+              "clays": [
+                { "id": 12, "house": "high", "launchT": 18800, "broken": true, "brokenT": 19481 },
+                { "id": 13, "house": "low", "launchT": 18875, "broken": true, "brokenT": 20198 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 19250,
+                  "arriveT": 19481,
+                  "barrel": 1,
+                  "aim": { "x": 49.4, "y": 70.87 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [12],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                },
+                {
+                  "t": 19958,
+                  "arriveT": 20198,
+                  "barrel": 0,
+                  "aim": { "x": 40.95, "y": 74.68 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [13],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 11,
+              "kind": "single",
+              "launchT": 21208,
+              "clays": [
+                { "id": 14, "house": "high", "launchT": 21208, "broken": true, "brokenT": 21915 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 21658,
+                  "arriveT": 21915,
+                  "barrel": 1,
+                  "aim": { "x": 39, "y": 82.13 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [14],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 12,
+              "kind": "single",
+              "launchT": 22925,
+              "clays": [
+                { "id": 15, "house": "low", "launchT": 22925, "broken": true, "brokenT": 23582 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 23375,
+                  "arriveT": 23582,
+                  "barrel": 0,
+                  "aim": { "x": 53.74, "y": 59.01 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [15],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 13,
+              "kind": "single",
+              "launchT": 24592,
+              "clays": [
+                { "id": 16, "house": "high", "launchT": 24592, "broken": true, "brokenT": 25302 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 25042,
+                  "arriveT": 25302,
+                  "barrel": 1,
+                  "aim": { "x": 42.55, "y": 83.94 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [16],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 14,
+              "kind": "double",
+              "launchT": 26317,
+              "clays": [
+                { "id": 17, "house": "high", "launchT": 26317, "broken": true, "brokenT": 27006 },
+                { "id": 18, "house": "low", "launchT": 26333, "broken": true, "brokenT": 27112 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 26767,
+                  "arriveT": 27006,
+                  "barrel": 0,
+                  "aim": { "x": 37.46, "y": 74.12 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [17],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                },
+                {
+                  "t": 26892,
+                  "arriveT": 27112,
+                  "barrel": 1,
+                  "aim": { "x": 49.18, "y": 66.15 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [18],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 15,
+              "kind": "single",
+              "launchT": 28125,
+              "clays": [
+                { "id": 19, "house": "high", "launchT": 28125, "broken": true, "brokenT": 28809 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 28575,
+                  "arriveT": 28809,
+                  "barrel": 0,
+                  "aim": { "x": 43.92, "y": 72.26 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [19],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 16,
+              "kind": "single",
+              "launchT": 29825,
+              "clays": [
+                { "id": 20, "house": "low", "launchT": 29825, "broken": true, "brokenT": 30485 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 30275,
+                  "arriveT": 30485,
+                  "barrel": 1,
+                  "aim": { "x": 55.98, "y": 59.96 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [20],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 17,
+              "kind": "double",
+              "launchT": 31500,
+              "clays": [
+                { "id": 21, "house": "high", "launchT": 31500, "broken": true, "brokenT": 32202 },
+                { "id": 22, "house": "low", "launchT": 31567, "broken": true, "brokenT": 32291 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 31950,
+                  "arriveT": 32202,
+                  "barrel": 0,
+                  "aim": { "x": 46.68, "y": 80.31 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [21],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                },
+                {
+                  "t": 32075,
+                  "arriveT": 32291,
+                  "barrel": 1,
+                  "aim": { "x": 50.29, "y": 63.8 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [22],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 18,
+              "kind": "single",
+              "launchT": 33300,
+              "clays": [
+                { "id": 23, "house": "low", "launchT": 33300, "broken": true, "brokenT": 33948 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 33750,
+                  "arriveT": 33948,
+                  "barrel": 0,
+                  "aim": { "x": 47.21, "y": 55.86 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [23],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 19,
+              "kind": "single",
+              "launchT": 34958,
+              "clays": [
+                { "id": 24, "house": "low", "launchT": 34958, "broken": true, "brokenT": 35622 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 35408,
+                  "arriveT": 35622,
+                  "barrel": 1,
+                  "aim": { "x": 57.47, "y": 61.35 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [24],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "scheme": "tap",
+      "position": 2,
+      "feelRating": 2,
+      "attempts": [
+        {
+          "attempt": 1,
+          "startedAt": "2026-10-12T12:00:00.000Z",
+          "durationMs": 66242,
+          "clays": 24,
+          "broken": 3,
+          "throwsCleared": 1,
+          "hitRate": 0.125,
+          "strayShots": 0,
+          "throws": [
+            {
+              "index": 0,
+              "kind": "single",
+              "launchT": 1208,
+              "clays": [
+                { "id": 1, "house": "high", "launchT": 1208, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 2017,
+                  "arriveT": 2269,
+                  "barrel": 0,
+                  "aim": { "x": 44.3, "y": 80.64 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 1,
+                  "missVector": { "x": -9.03, "y": -5.64 },
+                  "missDist": 10.64,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 1,
+              "kind": "single",
+              "launchT": 4492,
+              "clays": [
+                { "id": 2, "house": "low", "launchT": 4492, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 5300,
+                  "arriveT": 5504,
+                  "barrel": 1,
+                  "aim": { "x": 38.95, "y": 58.46 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 2,
+                  "missVector": { "x": 8.91, "y": -3.79 },
+                  "missDist": 9.68,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 2,
+              "kind": "single",
+              "launchT": 7267,
+              "clays": [
+                { "id": 3, "house": "high", "launchT": 7267, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 8075,
+                  "arriveT": 8324,
+                  "barrel": 0,
+                  "aim": { "x": 42.61, "y": 79.1 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 3,
+                  "missVector": { "x": -8.43, "y": -5.14 },
+                  "missDist": 9.87,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 3,
+              "kind": "double",
+              "launchT": 10733,
+              "clays": [
+                { "id": 4, "house": "high", "launchT": 10733, "broken": false, "brokenT": null },
+                { "id": 5, "house": "low", "launchT": 10850, "broken": true, "brokenT": 11774 }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 11542,
+                  "arriveT": 11774,
+                  "barrel": 1,
+                  "aim": { "x": 51.97, "y": 71.04 },
+                  "hit": true,
+                  "perfect": false,
+                  "broke": [5],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 4,
+              "kind": "single",
+              "launchT": 13658,
+              "clays": [
+                { "id": 6, "house": "high", "launchT": 13658, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 14467,
+                  "arriveT": 14731,
+                  "barrel": 0,
+                  "aim": { "x": 47.76, "y": 86.01 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 6,
+                  "missVector": { "x": -10.49, "y": -7.47 },
+                  "missDist": 12.88,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 5,
+              "kind": "single",
+              "launchT": 16658,
+              "clays": [
+                { "id": 7, "house": "high", "launchT": 16658, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 17467,
+                  "arriveT": 17732,
+                  "barrel": 1,
+                  "aim": { "x": 43.63, "y": 86.2 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 7,
+                  "missVector": { "x": -9.26, "y": -7.53 },
+                  "missDist": 11.93,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 6,
+              "kind": "single",
+              "launchT": 20017,
+              "clays": [
+                { "id": 8, "house": "low", "launchT": 20017, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 20825,
+                  "arriveT": 21046,
+                  "barrel": 0,
+                  "aim": { "x": 47.97, "y": 66.22 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 8,
+                  "missVector": { "x": 7.33, "y": -5.98 },
+                  "missDist": 9.46,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 7,
+              "kind": "single",
+              "launchT": 23550,
+              "clays": [
+                { "id": 9, "house": "low", "launchT": 23550, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 24358,
+                  "arriveT": 24560,
+                  "barrel": 1,
+                  "aim": { "x": 49.32, "y": 57.36 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 9,
+                  "missVector": { "x": 6.39, "y": -3.49 },
+                  "missDist": 7.28,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 8,
+              "kind": "single",
+              "launchT": 26633,
+              "clays": [
+                { "id": 10, "house": "high", "launchT": 26633, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 27442,
+                  "arriveT": 27709,
+                  "barrel": 0,
+                  "aim": { "x": 45.03, "y": 87.33 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 10,
+                  "missVector": { "x": -9.77, "y": -7.93 },
+                  "missDist": 12.58,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 9,
+              "kind": "single",
+              "launchT": 29858,
+              "clays": [
+                { "id": 11, "house": "low", "launchT": 29858, "broken": true, "brokenT": 30861 }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 30667,
+                  "arriveT": 30861,
+                  "barrel": 1,
+                  "aim": { "x": 49.28, "y": 53.95 },
+                  "hit": true,
+                  "perfect": false,
+                  "broke": [11],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 10,
+              "kind": "double",
+              "launchT": 31875,
+              "clays": [
+                { "id": 12, "house": "high", "launchT": 31875, "broken": false, "brokenT": null },
+                { "id": 13, "house": "low", "launchT": 31950, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 32683,
+                  "arriveT": 32923,
+                  "barrel": 0,
+                  "aim": { "x": 55.79, "y": 73.68 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 13,
+                  "missVector": { "x": 5.98, "y": 4.59 },
+                  "missDist": 7.54,
+                  "classified": "high"
+                },
+                {
+                  "t": 32808,
+                  "arriveT": 33030,
+                  "barrel": 1,
+                  "aim": { "x": 52.81, "y": 66.17 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 13,
+                  "missVector": { "x": 5.76, "y": -5.16 },
+                  "missDist": 7.74,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 11,
+              "kind": "single",
+              "launchT": 35567,
+              "clays": [
+                { "id": 14, "house": "high", "launchT": 35567, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 36375,
+                  "arriveT": 36639,
+                  "barrel": 0,
+                  "aim": { "x": 42.52, "y": 85.77 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 14,
+                  "missVector": { "x": -8.89, "y": -7.38 },
+                  "missDist": 11.56,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 12,
+              "kind": "single",
+              "launchT": 39042,
+              "clays": [
+                { "id": 15, "house": "low", "launchT": 39042, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 39850,
+                  "arriveT": 40066,
+                  "barrel": 1,
+                  "aim": { "x": 48.69, "y": 63.91 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 15,
+                  "missVector": { "x": 6.99, "y": -5.3 },
+                  "missDist": 8.77,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 13,
+              "kind": "single",
+              "launchT": 42658,
+              "clays": [
+                { "id": 16, "house": "high", "launchT": 42658, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 43467,
+                  "arriveT": 43735,
+                  "barrel": 0,
+                  "aim": { "x": 46.4, "y": 87.67 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 16,
+                  "missVector": { "x": -10.22, "y": -8.05 },
+                  "missDist": 13.01,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 14,
+              "kind": "double",
+              "launchT": 45767,
+              "clays": [
+                { "id": 17, "house": "high", "launchT": 45767, "broken": false, "brokenT": null },
+                { "id": 18, "house": "low", "launchT": 45783, "broken": true, "brokenT": 46820 }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 46575,
+                  "arriveT": 46820,
+                  "barrel": 1,
+                  "aim": { "x": 41.44, "y": 77.23 },
+                  "hit": true,
+                  "perfect": false,
+                  "broke": [18],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 15,
+              "kind": "single",
+              "launchT": 49567,
+              "clays": [
+                { "id": 19, "house": "high", "launchT": 49567, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 50375,
+                  "arriveT": 50616,
+                  "barrel": 0,
+                  "aim": { "x": 49.21, "y": 75.23 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 19,
+                  "missVector": { "x": -9.97, "y": -3.95 },
+                  "missDist": 10.72,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 16,
+              "kind": "single",
+              "launchT": 52467,
+              "clays": [
+                { "id": 20, "house": "low", "launchT": 52467, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 53275,
+                  "arriveT": 53494,
+                  "barrel": 1,
+                  "aim": { "x": 51.54, "y": 64.92 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 20,
+                  "missVector": { "x": 6.37, "y": -5.61 },
+                  "missDist": 8.49,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 17,
+              "kind": "double",
+              "launchT": 56100,
+              "clays": [
+                { "id": 21, "house": "high", "launchT": 56100, "broken": false, "brokenT": null },
+                { "id": 22, "house": "low", "launchT": 56167, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 56908,
+                  "arriveT": 57169,
+                  "barrel": 0,
+                  "aim": { "x": 51.49, "y": 83.9 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 21,
+                  "missVector": { "x": -11.44, "y": -6.74 },
+                  "missDist": 13.28,
+                  "classified": "behind"
+                },
+                {
+                  "t": 57033,
+                  "arriveT": 57259,
+                  "barrel": 1,
+                  "aim": { "x": 45.36, "y": 68.47 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 22,
+                  "missVector": { "x": 7.58, "y": -5.65 },
+                  "missDist": 9.45,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 18,
+              "kind": "single",
+              "launchT": 59633,
+              "clays": [
+                { "id": 23, "house": "low", "launchT": 59633, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 809,
+              "shots": [
+                {
+                  "t": 60442,
+                  "arriveT": 60650,
+                  "barrel": 0,
+                  "aim": { "x": 40.26, "y": 60.43 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 23,
+                  "missVector": { "x": 8.77, "y": -4.31 },
+                  "missDist": 9.77,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            },
+            {
+              "index": 19,
+              "kind": "single",
+              "launchT": 62500,
+              "clays": [
+                { "id": 24, "house": "low", "launchT": 62500, "broken": false, "brokenT": null }
+              ],
+              "timeToFirstShotMs": 808,
+              "shots": [
+                {
+                  "t": 63308,
+                  "arriveT": 63531,
+                  "barrel": 1,
+                  "aim": { "x": 53.47, "y": 66.43 },
+                  "hit": false,
+                  "perfect": false,
+                  "broke": [],
+                  "targetClayId": 24,
+                  "missVector": { "x": 6, "y": -6.08 },
+                  "missDist": 8.54,
+                  "classified": "behind"
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": "behind",
+              "reported": "behind",
+              "explained": true
+            }
+          ]
+        },
+        {
+          "attempt": 2,
+          "startedAt": "2026-10-12T12:00:00.000Z",
+          "durationMs": 36642,
+          "clays": 24,
+          "broken": 24,
+          "throwsCleared": 20,
+          "hitRate": 1,
+          "strayShots": 0,
+          "throws": [
+            {
+              "index": 0,
+              "kind": "single",
+              "launchT": 1208,
+              "clays": [
+                { "id": 1, "house": "high", "launchT": 1208, "broken": true, "brokenT": 1904 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 1658,
+                  "arriveT": 1904,
+                  "barrel": 0,
+                  "aim": { "x": 40.15, "y": 77.26 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [1],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 1,
+              "kind": "single",
+              "launchT": 2917,
+              "clays": [
+                { "id": 2, "house": "low", "launchT": 2917, "broken": true, "brokenT": 3560 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 3367,
+                  "arriveT": 3560,
+                  "barrel": 1,
+                  "aim": { "x": 46.33, "y": 54.16 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [2],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 2,
+              "kind": "single",
+              "launchT": 4567,
+              "clays": [
+                { "id": 3, "house": "high", "launchT": 4567, "broken": true, "brokenT": 5259 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 5017,
+                  "arriveT": 5259,
+                  "barrel": 0,
+                  "aim": { "x": 38.59, "y": 75.83 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [3],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 3,
+              "kind": "double",
+              "launchT": 6267,
+              "clays": [
+                { "id": 4, "house": "high", "launchT": 6267, "broken": true, "brokenT": 6942 },
+                { "id": 5, "house": "low", "launchT": 6383, "broken": true, "brokenT": 7649 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 6717,
+                  "arriveT": 6942,
+                  "barrel": 1,
+                  "aim": { "x": 45.89, "y": 68.51 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [4],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                },
+                {
+                  "t": 7417,
+                  "arriveT": 7649,
+                  "barrel": 0,
+                  "aim": { "x": 39.44, "y": 71.42 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [5],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 4,
+              "kind": "single",
+              "launchT": 8658,
+              "clays": [
+                { "id": 6, "house": "high", "launchT": 8658, "broken": true, "brokenT": 9365 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 9108,
+                  "arriveT": 9365,
+                  "barrel": 1,
+                  "aim": { "x": 43.61, "y": 82.34 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [6],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 5,
+              "kind": "single",
+              "launchT": 10375,
+              "clays": [
+                { "id": 7, "house": "high", "launchT": 10375, "broken": true, "brokenT": 11082 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 10825,
+                  "arriveT": 11082,
+                  "barrel": 0,
+                  "aim": { "x": 39.99, "y": 82.54 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [7],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 6,
+              "kind": "single",
+              "launchT": 12092,
+              "clays": [
+                { "id": 8, "house": "low", "launchT": 12092, "broken": true, "brokenT": 12752 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 12542,
+                  "arriveT": 12752,
+                  "barrel": 1,
+                  "aim": { "x": 53.01, "y": 61.07 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [8],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 7,
+              "kind": "single",
+              "launchT": 13767,
+              "clays": [
+                { "id": 9, "house": "low", "launchT": 13767, "broken": true, "brokenT": 14412 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 14217,
+                  "arriveT": 14412,
+                  "barrel": 0,
+                  "aim": { "x": 54.65, "y": 53.3 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [9],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 8,
+              "kind": "single",
+              "launchT": 15425,
+              "clays": [
+                { "id": 10, "house": "high", "launchT": 15425, "broken": true, "brokenT": 16134 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 15875,
+                  "arriveT": 16134,
+                  "barrel": 1,
+                  "aim": { "x": 41.32, "y": 83.62 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [10],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 9,
+              "kind": "single",
+              "launchT": 17150,
+              "clays": [
+                { "id": 11, "house": "low", "launchT": 17150, "broken": true, "brokenT": 17789 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 17600,
+                  "arriveT": 17789,
+                  "barrel": 0,
+                  "aim": { "x": 54.82, "y": 50.4 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [11],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 10,
+              "kind": "double",
+              "launchT": 18800,
+              "clays": [
+                { "id": 12, "house": "high", "launchT": 18800, "broken": true, "brokenT": 19481 },
+                { "id": 13, "house": "low", "launchT": 18875, "broken": true, "brokenT": 20198 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 19250,
+                  "arriveT": 19481,
+                  "barrel": 1,
+                  "aim": { "x": 49.4, "y": 70.87 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [12],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                },
+                {
+                  "t": 19958,
+                  "arriveT": 20198,
+                  "barrel": 0,
+                  "aim": { "x": 40.95, "y": 74.68 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [13],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 11,
+              "kind": "single",
+              "launchT": 21208,
+              "clays": [
+                { "id": 14, "house": "high", "launchT": 21208, "broken": true, "brokenT": 21915 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 21658,
+                  "arriveT": 21915,
+                  "barrel": 1,
+                  "aim": { "x": 39, "y": 82.13 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [14],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 12,
+              "kind": "single",
+              "launchT": 22925,
+              "clays": [
+                { "id": 15, "house": "low", "launchT": 22925, "broken": true, "brokenT": 23582 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 23375,
+                  "arriveT": 23582,
+                  "barrel": 0,
+                  "aim": { "x": 53.74, "y": 59.01 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [15],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 13,
+              "kind": "single",
+              "launchT": 24592,
+              "clays": [
+                { "id": 16, "house": "high", "launchT": 24592, "broken": true, "brokenT": 25302 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 25042,
+                  "arriveT": 25302,
+                  "barrel": 1,
+                  "aim": { "x": 42.55, "y": 83.94 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [16],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 14,
+              "kind": "double",
+              "launchT": 26317,
+              "clays": [
+                { "id": 17, "house": "high", "launchT": 26317, "broken": true, "brokenT": 27006 },
+                { "id": 18, "house": "low", "launchT": 26333, "broken": true, "brokenT": 27112 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 26767,
+                  "arriveT": 27006,
+                  "barrel": 0,
+                  "aim": { "x": 37.46, "y": 74.12 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [17],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                },
+                {
+                  "t": 26892,
+                  "arriveT": 27112,
+                  "barrel": 1,
+                  "aim": { "x": 49.18, "y": 66.15 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [18],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 15,
+              "kind": "single",
+              "launchT": 28125,
+              "clays": [
+                { "id": 19, "house": "high", "launchT": 28125, "broken": true, "brokenT": 28809 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 28575,
+                  "arriveT": 28809,
+                  "barrel": 0,
+                  "aim": { "x": 43.92, "y": 72.26 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [19],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 16,
+              "kind": "single",
+              "launchT": 29825,
+              "clays": [
+                { "id": 20, "house": "low", "launchT": 29825, "broken": true, "brokenT": 30485 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 30275,
+                  "arriveT": 30485,
+                  "barrel": 1,
+                  "aim": { "x": 55.98, "y": 59.96 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [20],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 17,
+              "kind": "double",
+              "launchT": 31500,
+              "clays": [
+                { "id": 21, "house": "high", "launchT": 31500, "broken": true, "brokenT": 32202 },
+                { "id": 22, "house": "low", "launchT": 31567, "broken": true, "brokenT": 32291 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 31950,
+                  "arriveT": 32202,
+                  "barrel": 0,
+                  "aim": { "x": 46.68, "y": 80.31 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [21],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                },
+                {
+                  "t": 32075,
+                  "arriveT": 32291,
+                  "barrel": 1,
+                  "aim": { "x": 50.29, "y": 63.8 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [22],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 18,
+              "kind": "single",
+              "launchT": 33300,
+              "clays": [
+                { "id": 23, "house": "low", "launchT": 33300, "broken": true, "brokenT": 33948 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 33750,
+                  "arriveT": 33948,
+                  "barrel": 0,
+                  "aim": { "x": 47.21, "y": 55.86 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [23],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            },
+            {
+              "index": 19,
+              "kind": "single",
+              "launchT": 34958,
+              "clays": [
+                { "id": 24, "house": "low", "launchT": 34958, "broken": true, "brokenT": 35622 }
+              ],
+              "timeToFirstShotMs": 450,
+              "shots": [
+                {
+                  "t": 35408,
+                  "arriveT": 35622,
+                  "barrel": 1,
+                  "aim": { "x": 57.47, "y": 61.35 },
+                  "hit": true,
+                  "perfect": true,
+                  "broke": [24],
+                  "targetClayId": null,
+                  "missVector": null,
+                  "missDist": null,
+                  "classified": null
+                }
+              ],
+              "rejectedTaps": 0,
+              "classified": null,
+              "reported": null,
+              "explained": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
