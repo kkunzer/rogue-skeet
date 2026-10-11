@@ -5,6 +5,9 @@ import { createMenuScene } from './scenes/menu';
 import { createPlayfieldScene } from './scenes/playfield';
 import { SceneRouter, type SceneName } from './scenes/scene';
 import { isDevMode, loadDevPanel, onTuningChange, tuning } from './feel/tuning';
+import { createControlTestScene } from './modes/controlTest/controlTest';
+import { createSandboxScene } from './modes/sandbox/sandbox';
+import './ui/ui.css';
 
 async function boot(): Promise<void> {
   const host = document.getElementById('app');
@@ -16,6 +19,8 @@ async function boot(): Promise<void> {
   const router = new SceneRouter({ stage });
   router.register('menu', createMenuScene);
   router.register('playfield', createPlayfieldScene);
+  router.register('sandbox', createSandboxScene);
+  router.register('controlTest', createControlTestScene);
 
   const overlay = new DebugOverlay();
   const loop = new GameLoop({
@@ -32,7 +37,8 @@ async function boot(): Promise<void> {
   stage.app.ticker.stop();
 
   const first = new URLSearchParams(location.search).get('scene');
-  router.go(first === 'playfield' ? ('playfield' satisfies SceneName) : 'menu');
+  const names: SceneName[] = ['playfield', 'sandbox', 'controlTest'];
+  router.go(names.find((n) => n === first) ?? 'menu');
   loop.start();
   document.body.dataset.ready = '1';
 

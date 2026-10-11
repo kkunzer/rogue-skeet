@@ -1,0 +1,233 @@
+:root {
+  --ui-bg: rgba(14, 20, 34, 0.92);
+  --ui-card: #1a2540;
+  --ui-line: #34476e;
+  --ui-text: #eef2fb;
+  --ui-dim: #9aa8c7;
+  --ui-accent: #ffb454;
+  --ui-good: #7be08a;
+}
+#ui-root {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  color: var(--ui-text);
+}
+#ui-root * {
+  box-sizing: border-box;
+}
+.hud {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(44px + env(safe-area-inset-top));
+  padding: 0 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  pointer-events: none;
+  font-size: 14px;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+}
+.hud-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.hud-dim {
+  color: var(--ui-dim);
+  font-weight: 500;
+}
+.pips {
+  display: inline-flex;
+  gap: 4px;
+  align-items: center;
+}
+.pip {
+  width: 10px;
+  height: 18px;
+  border-radius: 3px;
+  background: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+.pip.empty {
+  background: transparent;
+  opacity: 0.4;
+}
+.reload {
+  width: 36px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.reload > i {
+  display: block;
+  height: 100%;
+  background: var(--ui-accent);
+}
+.screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(8, 12, 22, 0.78);
+  pointer-events: auto;
+  overflow-y: auto;
+  touch-action: pan-y;
+}
+.screen.clear {
+  background: rgba(8, 12, 22, 0.35);
+  align-items: flex-end;
+}
+.card {
+  width: min(100%, 420px);
+  background: var(--ui-card);
+  border: 1px solid var(--ui-line);
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+.card h1,
+.card h2 {
+  margin: 0;
+  font-size: 20px;
+}
+.card p {
+  margin: 0;
+  line-height: 1.4;
+  color: var(--ui-dim);
+  font-size: 15px;
+}
+.card label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--ui-dim);
+}
+.card input[type='text'] {
+  font: inherit;
+  font-size: 16px;
+  color: var(--ui-text);
+  background: #0f1830;
+  border: 1px solid var(--ui-line);
+  border-radius: 8px;
+  padding: 12px;
+}
+.card textarea {
+  width: 100%;
+  height: 120px;
+  font:
+    11px/1.3 ui-monospace,
+    Menlo,
+    monospace;
+  color: var(--ui-text);
+  background: #0f1830;
+  border: 1px solid var(--ui-line);
+  border-radius: 8px;
+}
+.row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.row > * {
+  flex: 1 1 0;
+}
+.btn {
+  font: inherit;
+  font-weight: 650;
+  font-size: 16px;
+  min-height: 48px;
+  padding: 10px 14px;
+  color: var(--ui-text);
+  background: #2f4f7f;
+  border: 1px solid #5f8bd0;
+  border-radius: 10px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.btn:active {
+  filter: brightness(1.25);
+}
+.btn.primary {
+  background: #c9791c;
+  border-color: #ffb454;
+}
+.btn.ghost {
+  background: transparent;
+  border-color: var(--ui-line);
+  color: var(--ui-dim);
+}
+.btn.on {
+  outline: 2px solid var(--ui-accent);
+}
+.seg {
+  display: flex;
+  gap: 6px;
+}
+.seg .btn {
+  flex: 1;
+  min-height: 44px;
+  padding: 8px;
+  font-size: 15px;
+}
+.small {
+  font-size: 13px;
+  color: var(--ui-dim);
+}
+.stat {
+  font-variant-numeric: tabular-nums;
+}
+table.res {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+table.res td,
+table.res th {
+  text-align: left;
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--ui-line);
+}
+.gear {
+  position: absolute;
+  right: 10px;
+  top: calc(8px + env(safe-area-inset-top));
+  pointer-events: auto;
+  min-height: 40px;
+  padding: 6px 12px;
+  font-size: 14px;
+}
+.panel {
+  position: absolute;
+  right: 10px;
+  top: calc(56px + env(safe-area-inset-top));
+  width: min(300px, calc(100vw - 20px));
+  pointer-events: auto;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+}
+.range-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.range-row input[type='range'] {
+  flex: 1;
+}

@@ -16,8 +16,8 @@ export function createMenuScene({ stage, go }: SceneContext): Scene {
   let off: (() => void) | null = null;
 
   const buttons: ButtonSpec[] = [
-    { label: 'Sandbox', enabled: false },
-    { label: 'Control Test', enabled: false },
+    { label: 'Sandbox', enabled: true, onTap: () => go('sandbox') },
+    { label: 'Control Test', enabled: true, onTap: () => go('controlTest') },
     { label: 'Run', enabled: false },
     { label: 'Layout preview', enabled: true, onTap: () => go('playfield') },
   ];
