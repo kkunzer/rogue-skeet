@@ -54,6 +54,8 @@ for (const scheme of ['tap', 'drag', 'flick'] as const) {
 
 test('sandbox: a real touch tap fires a shot (Playwright touchscreen)', async ({ page }) => {
   await boot(page, 'scene=sandbox&test');
+  // let the sim and input clock get going (SwiftShader is slow to settle after boot)
+  await page.waitForFunction(() => (window.__debug.state()?.time ?? 0) > 1.5);
   const box = await page.locator('#app canvas').boundingBox();
   if (!box) throw new Error('no canvas');
   await page.touchscreen.tap(box.x + box.width / 2, box.y + box.height * 0.35);
@@ -109,6 +111,8 @@ test('control test: a bot completes a full 20-throw attempt and the exported JSO
   const asked = att?.throws.filter((t) => t.reported !== null) ?? [];
   expect(asked.length).toBeGreaterThanOrEqual(2);
   expect(result.settings.aimAssist).toBe(0);
+  expect(result.version).toBe(2);
+  expect(result.juice).toMatchObject({ juice: true, sound: true, haptics: true });
   expect(result.device.userAgent).toContain('Chrome');
 
   // autosaved: the saved-sessions list on the setup screen offers this run

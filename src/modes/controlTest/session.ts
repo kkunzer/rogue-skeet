@@ -1,4 +1,5 @@
 import type { Handedness, SchemeId } from '../../input/scheme';
+import { currentJuiceRecord } from '../../feel/feelSystem';
 import { TEST_SEED } from '../../sim/throws';
 import { BUILD_SHA } from '../../telemetry/build';
 import { collectDevice } from '../../telemetry/device';
@@ -7,6 +8,7 @@ import {
   SCHEMA_VERSION,
   type AttemptRecord,
   type ControlTestResult,
+  type JuiceRecord,
 } from '../../telemetry/schema';
 import { saveSession, type KeyValueStore } from '../../telemetry/storage';
 import { schemeOrderFor } from './plan';
@@ -17,6 +19,8 @@ export interface SessionOptions {
   attemptsPerScheme: number;
   onlySchemes?: SchemeId[];
   settings: Record<string, number | string | boolean>;
+  /** Feel settings in force; defaults to the persisted ones. */
+  juice?: JuiceRecord;
   /** Defaults to localStorage; pass null to disable autosave. */
   store?: KeyValueStore | null;
   now?: () => Date;
@@ -45,6 +49,7 @@ export class ControlTestSession {
       tester: { id: opts.testerId.trim(), handedness: opts.handedness },
       device: collectDevice(),
       settings: opts.settings,
+      juice: opts.juice ?? currentJuiceRecord(),
       testSeed: TEST_SEED,
       attemptsPerScheme: opts.attemptsPerScheme,
       schemeOrder: this.order,

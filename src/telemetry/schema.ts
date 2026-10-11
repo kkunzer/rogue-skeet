@@ -3,7 +3,18 @@ import type { MissReason } from '../sim/classify';
 import type { HouseId } from '../sim/houses';
 
 export const SCHEMA_ID = 'rogue-skeet.control-test';
-export const SCHEMA_VERSION = 1;
+/** v2 adds the required `juice` block. v1 files (no juice block) still validate. */
+export const SCHEMA_VERSION = 2;
+export const SUPPORTED_VERSIONS: readonly number[] = [1, 2];
+
+/** Feel settings in force during a session: the juice A/B state plus sound and haptics. */
+export interface JuiceRecord {
+  juice: boolean;
+  sound: boolean;
+  volume: number;
+  haptics: boolean;
+  hapticProvider: string;
+}
 
 export type ReportedReason = MissReason | 'unsure';
 export const REPORTED_REASONS: readonly ReportedReason[] = [
@@ -103,7 +114,7 @@ export interface DeviceInfo {
 
 export interface ControlTestResult {
   schema: typeof SCHEMA_ID;
-  version: typeof SCHEMA_VERSION;
+  version: number;
   buildSha: string;
   createdAt: string;
   updatedAt: string;
@@ -112,6 +123,8 @@ export interface ControlTestResult {
   device: DeviceInfo;
   /** Snapshot of every tunable at the start of the session (aim assist, offsets, flick curve, ...). */
   settings: Record<string, number | string | boolean>;
+  /** Present in v2+; absent in v1 files. */
+  juice?: JuiceRecord;
   testSeed: string;
   attemptsPerScheme: number;
   schemeOrder: SchemeId[];
@@ -132,7 +145,24 @@ export function validateResult(input: unknown): string[] {
   };
   if (!isObj(input)) return ['result is not an object'];
   need(input.schema === SCHEMA_ID, `schema must be "${SCHEMA_ID}"`);
-  need(input.version === SCHEMA_VERSION, `version must be ${SCHEMA_VERSION}`);
+  need(
+    typeof input.version === 'number' && SUPPORTED_VERSIONS.includes(input.version),
+    `version must be one of ${SUPPORTED_VERSIONS.join(', ')}`,
+  );
+  if (input.version === 2) {
+    const j = input.juice;
+    need(
+      isObj(j) &&
+        typeof j.juice === 'boolean' &&
+        typeof j.sound === 'boolean' &&
+        isNum(j.volume) &&
+        typeof j.haptics === 'boolean' &&
+        isStr(j.hapticProvider),
+      'juice block invalid (required in v2)',
+    );
+  } else if (input.juice !== undefined) {
+    need(isObj(input.juice), 'juice must be an object');
+  }
   need(isStr(input.buildSha), 'buildSha must be a string');
   need(
     isStr(input.createdAt) && !Number.isNaN(Date.parse(input.createdAt)),

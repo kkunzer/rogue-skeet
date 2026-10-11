@@ -10,6 +10,7 @@ import {
 } from '../../telemetry/schema';
 import { loadSessions } from '../../telemetry/storage';
 import { button, el, safeGet, safeSet, uiRoot } from '../../ui/dom';
+import { buildFeelControls } from '../../ui/feelControls';
 import { Hud } from '../shared/hud';
 import { PlaySession } from '../shared/play';
 import { AttemptRunner } from './attempt';
@@ -188,6 +189,7 @@ export function createControlTestScene({ stage, go }: SceneContext): Scene {
               el('span', { text: 'Ghost trail (tap)' }),
             ]),
           ]),
+          buildFeelControls(),
           start,
           savedList,
           button('Back', () => go('menu'), { cls: 'ghost', id: 'btn-menu' }),

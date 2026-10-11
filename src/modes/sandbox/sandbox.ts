@@ -6,6 +6,7 @@ import { sandboxThrows, type LaunchRange, type SandboxThrowOptions } from '../..
 import { World } from '../../sim/world';
 import type { Scene, SceneContext } from '../../scenes/scene';
 import { button, el, safeGet, safeSet, uiRoot } from '../../ui/dom';
+import { buildFeelControls } from '../../ui/feelControls';
 import { Hud } from '../shared/hud';
 import { PlaySession } from '../shared/play';
 
@@ -174,6 +175,7 @@ export function createSandboxScene({ stage, go }: SceneContext): Scene {
         ghost,
         el('span', { text: 'Ghost trail on clays (tap)' }),
       ]),
+      buildFeelControls(),
       el('div', { cls: 'row' }, [
         button('Reset', () => restart(), { cls: 'ghost', id: 'btn-reset' }),
         button('Menu', () => go('menu'), { cls: 'ghost', id: 'btn-menu' }),

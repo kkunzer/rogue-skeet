@@ -134,3 +134,37 @@ describe('attempt flow', () => {
     expect(runner.director.index).toBe(idx + 1);
   });
 });
+
+describe('schema v2 (juice block)', () => {
+  it('new sessions are v2 and record the juice settings', () => {
+    const { result } = fullSession();
+    expect(result.version).toBe(2);
+    expect(result.juice).toMatchObject({ juice: true, sound: true, haptics: true });
+    expect(typeof result.juice?.hapticProvider).toBe('string');
+  });
+  it('honours an explicit juice record', () => {
+    const session = new ControlTestSession({
+      testerId: 'ab',
+      handedness: 'right',
+      attemptsPerScheme: 1,
+      settings: {},
+      store: null,
+      juice: { juice: false, sound: false, volume: 0.3, haptics: false, hapticProvider: 'none' },
+    });
+    expect(session.result.juice?.juice).toBe(false);
+    expect(validateResult(session.result)).toEqual([]);
+  });
+  it('still validates v1 results (no juice block) and rejects a v2 without one', () => {
+    const { result } = fullSession();
+    const v1 = JSON.parse(resultToJSON(result));
+    v1.version = 1;
+    delete v1.juice;
+    expect(validateResult(v1)).toEqual([]);
+    const bad = JSON.parse(resultToJSON(result));
+    delete bad.juice;
+    expect(validateResult(bad)).not.toEqual([]);
+    bad.juice = { juice: 'yes' };
+    expect(validateResult(bad)).not.toEqual([]);
+    expect(parseResult(JSON.stringify(v1)).version).toBe(1);
+  });
+});

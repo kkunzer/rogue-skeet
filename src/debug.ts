@@ -7,6 +7,36 @@ import { idealAim } from './sim/predict';
 import type { World } from './sim/world';
 import type { ControlTestResult } from './telemetry/schema';
 
+/** Presentation counters exposed to tests (`window.__debug.fx()`). */
+export interface FxDebug {
+  shardsSpawned: number;
+  particlesSpawned: number;
+  ringsSpawned: number;
+  shattersSpawned: number;
+  activeShards: number;
+  activeParticles: number;
+  peakActive: number;
+  dropped: number;
+  shatters: number;
+  perfects: number;
+  missPuffs: number;
+  streak: number;
+  audio: {
+    triggered: number;
+    played: number;
+    last: string | null;
+    byCue: Record<string, number>;
+    state: string;
+    samples: string[];
+  };
+  haptics: { provider: string; triggers: number; last: string | null };
+  hitStopActive: boolean;
+  hitStops: number;
+  shakeAmp: number;
+  paused: boolean;
+  juiceOn: boolean;
+}
+
 /** What the active mode hands to the debug API. */
 export interface DebugProvider {
   mode: string;
@@ -15,6 +45,8 @@ export interface DebugProvider {
   cfg: () => SimConfig & InputConfig;
   clock: SimClock;
   canvas: () => HTMLCanvasElement;
+  fx?: () => FxDebug;
+  pauseFx?: (on: boolean) => void;
   toClient: (p: Vec2) => { x: number; y: number };
   result?: () => ControlTestResult | null;
   phase?: () => string;
@@ -81,7 +113,7 @@ const api = {
    * Perform the active scheme's gesture so that it fires at the ideal lead point for clay `id`,
    * dispatching real PointerEvents on the canvas. Returns the aim point, or null if unreachable.
    */
-  shootAt(id: number, opts: { lead?: boolean } = {}): Vec2 | null {
+  shootAt(id: number, opts: { lead?: boolean; offset?: Vec2 } = {}): Vec2 | null {
     const p = need();
     const w = p.world();
     const c = w?.clays.find((x) => x.id === id && x.status === 'live');
@@ -90,7 +122,8 @@ const api = {
     const probe = scheme.script({ x: 45, y: 80 });
     const lead = Math.max(0, -Math.min(...probe.events.map((e) => e.t)));
     const delay = lead + sinceStep(p, w);
-    const aim = opts.lead === false ? { x: c.x, y: c.y } : idealAim(p.cfg(), c, delay).aim;
+    const base = opts.lead === false ? { x: c.x, y: c.y } : idealAim(p.cfg(), c, delay).aim;
+    const aim = opts.offset ? { x: base.x + opts.offset.x, y: base.y + opts.offset.y } : base;
     if (!scheme.canReach(aim)) return null;
     const canvas = p.canvas();
     const events = scheme.script(aim).events;
@@ -133,6 +166,10 @@ const api = {
     }
     return aim;
   },
+  /** Presentation counters: particles spawned, audio cues triggered, haptics, hit-stop. */
+  fx: (): FxDebug | null => provider?.fx?.() ?? null,
+  /** Hold the presentation still (the sim keeps running) so a mid-shatter frame can be captured. */
+  pauseFx: (on = true): void => provider?.pauseFx?.(on),
   worldToClient: (x: number, y: number) => need().toClient({ x, y }),
   result: (): ControlTestResult | null => provider?.result?.() ?? null,
 };

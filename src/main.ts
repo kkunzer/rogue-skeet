@@ -7,12 +7,14 @@ import { SceneRouter, type SceneName } from './scenes/scene';
 import { isDevMode, loadDevPanel, onTuningChange, tuning } from './feel/tuning';
 import { createControlTestScene } from './modes/controlTest/controlTest';
 import { createSandboxScene } from './modes/sandbox/sandbox';
+import { initFeel } from './feel/feelSystem';
 import './ui/ui.css';
 
 async function boot(): Promise<void> {
   const host = document.getElementById('app');
   if (!host) throw new Error('#app missing');
 
+  initFeel();
   const stage = new Stage();
   await stage.init(host);
 
