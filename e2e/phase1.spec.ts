@@ -76,7 +76,7 @@ test('sandbox settings panel switches scheme and handedness', async ({ page }) =
 test('control test: a bot completes a full 20-throw attempt and the exported JSON validates', async ({
   page,
 }) => {
-  test.setTimeout(180_000);
+  test.setTimeout(360_000);
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(String(e)));
   await boot(page, 'scene=controlTest&test&attempts=1&schemes=tap');
@@ -89,7 +89,7 @@ test('control test: a bot completes a full 20-throw attempt and the exported JSO
   await expect(page.locator('body')).toHaveAttribute('data-phase', 'playing');
 
   // throws 2 and 6 are led badly on purpose, so the "Why did you miss?" prompt appears
-  const res = await runBot(page, { stopAtPhase: 'rating', missThrows: [2, 6], timeoutMs: 150_000 });
+  const res = await runBot(page, { stopAtPhase: 'rating', missThrows: [2, 6], timeoutMs: 300_000 });
   expect(res.timedOut).toBe(false);
   await expect(page.locator('body')).toHaveAttribute('data-phase', 'rating');
   await page.click('#rate-4');

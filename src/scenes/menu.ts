@@ -1,5 +1,6 @@
 import { Container, Graphics, Text } from 'pixi.js';
 import { buildGreybox } from '../render/greybox';
+import { loadRuns } from '../modes/run/runLog';
 import type { Scene, SceneContext } from './scene';
 
 interface ButtonSpec {
@@ -18,7 +19,8 @@ export function createMenuScene({ stage, go }: SceneContext): Scene {
   const buttons: ButtonSpec[] = [
     { label: 'Sandbox', enabled: true, onTap: () => go('sandbox') },
     { label: 'Control Test', enabled: true, onTap: () => go('controlTest') },
-    { label: 'Run', enabled: false },
+    { label: 'Run', enabled: true, onTap: () => go('run') },
+    { label: `Run log (${loadRuns().length})`, enabled: true, onTap: () => go('runLog') },
     { label: 'Layout preview', enabled: true, onTap: () => go('playfield') },
   ];
 

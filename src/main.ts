@@ -6,7 +6,11 @@ import { createPlayfieldScene } from './scenes/playfield';
 import { SceneRouter, type SceneName } from './scenes/scene';
 import { isDevMode, loadDevPanel, onTuningChange, tuning } from './feel/tuning';
 import { createControlTestScene } from './modes/controlTest/controlTest';
+import { createRunScene } from './modes/run/run';
 import { createSandboxScene } from './modes/sandbox/sandbox';
+import { createRunLogScene } from './scenes/runLog';
+import { debugEnabled } from './debug';
+import { timeScale } from './core/timescale';
 import { initFeel } from './feel/feelSystem';
 import './ui/ui.css';
 
@@ -15,6 +19,9 @@ async function boot(): Promise<void> {
   if (!host) throw new Error('#app missing');
 
   initFeel();
+  // Test-only time dilation for e2e bots (documented in the README); ignored in normal play.
+  const speed = Number(new URLSearchParams(location.search).get('simspeed'));
+  if (debugEnabled() && speed >= 1 && speed <= 8) timeScale.value = speed;
   const stage = new Stage();
   await stage.init(host);
 
@@ -23,6 +30,8 @@ async function boot(): Promise<void> {
   router.register('playfield', createPlayfieldScene);
   router.register('sandbox', createSandboxScene);
   router.register('controlTest', createControlTestScene);
+  router.register('run', createRunScene);
+  router.register('runLog', createRunLogScene);
 
   const overlay = new DebugOverlay();
   const loop = new GameLoop({
@@ -39,7 +48,7 @@ async function boot(): Promise<void> {
   stage.app.ticker.stop();
 
   const first = new URLSearchParams(location.search).get('scene');
-  const names: SceneName[] = ['playfield', 'sandbox', 'controlTest'];
+  const names: SceneName[] = ['playfield', 'sandbox', 'controlTest', 'run', 'runLog'];
   router.go(names.find((n) => n === first) ?? 'menu');
   loop.start();
   document.body.dataset.ready = '1';

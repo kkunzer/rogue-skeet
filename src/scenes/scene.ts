@@ -5,7 +5,7 @@ export interface SceneContext {
   go: (name: SceneName) => void;
 }
 
-export type SceneName = 'menu' | 'playfield' | 'sandbox' | 'controlTest';
+export type SceneName = 'menu' | 'playfield' | 'sandbox' | 'controlTest' | 'run' | 'runLog';
 
 export interface Scene {
   mount(): void;
